@@ -19,7 +19,8 @@ import {
   LayoutList,
   ClipboardCheck,
   FileSignature,
-  Users
+  Users,
+  ArrowLeft
 } from 'lucide-react';
 import { pathologies, Pathology } from './data/pathologies';
 import { technicalTerms, TechnicalTerm } from './data/terms';
@@ -245,7 +246,7 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden bg-bg-dark">
         {/* Header / Search */}
-        <header className="bg-card-dark/50 backdrop-blur-xl border-b border-border-dark p-10 flex flex-col gap-8">
+        <header className={cn("bg-card-dark/50 backdrop-blur-xl border-b border-border-dark p-10 flex-col gap-8", selectedItem ? "hidden md:flex" : "flex")}>
           <div className="flex items-center justify-between">
             <h2 className="text-4xl font-black text-white tracking-tighter">
               {activeTab === 'ALMANAC' && "Almanaque Clínico"}
@@ -304,7 +305,7 @@ export default function App() {
         {/* Content Area */}
         <div className="flex-1 flex overflow-hidden">
           {/* List View */}
-          <div className="w-full md:w-96 border-r border-[#1A1A1A] overflow-y-auto bg-[#0A0A0A]/30 shrink-0 no-scrollbar">
+          <div className={cn("w-full md:w-96 border-r border-[#1A1A1A] overflow-y-auto bg-[#0A0A0A]/30 shrink-0 no-scrollbar", selectedItem ? "hidden md:block" : "block")}>
             <AnimatePresence mode="wait">
               <motion.div 
                 key={activeTab}
@@ -384,31 +385,39 @@ export default function App() {
           </div>
 
           {/* Detail View */}
-          <div className="hidden md:block flex-1 overflow-y-auto bg-bg-dark p-16 no-scrollbar">
+          <div className={cn("flex-1 overflow-y-auto bg-bg-dark p-6 md:p-16 no-scrollbar", selectedItem ? "block" : "hidden md:block")}>
             <AnimatePresence mode="wait">
               {selectedItem ? (
                 <motion.div 
                   key={selectedItem.id || selectedItem.term || selectedItem.name || selectedItem.title}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="max-w-5xl mx-auto space-y-12"
+                  className="max-w-5xl mx-auto space-y-8 md:space-y-12"
                 >
                   {/* Header Detail */}
-                  <div className="bg-card-dark p-12 rounded-[3rem] border border-border-dark relative overflow-hidden">
+                  <div className="bg-card-dark p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-border-dark relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full -mr-32 -mt-32" />
                     
-                    <div className="flex items-center gap-8 mb-8 relative z-10">
-                      <div className="w-20 h-20 bg-white/5 border border-white/20 rounded-[2rem] flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-                        {activeTab === 'ALMANAC' && <Stethoscope className="text-white w-10 h-10" strokeWidth={1.5} />}
-                        {activeTab === 'SCALES' && <ClipboardCheck className="text-white w-10 h-10" strokeWidth={1.5} />}
-                        {activeTab === 'TERMS' && <Book className="text-white w-10 h-10" strokeWidth={1.5} />}
-                        {activeTab === 'PHARMA' && <Pill className="text-white w-10 h-10" strokeWidth={1.5} />}
-                        {activeTab === 'PRESCRIPTION' && <FileSignature className="text-white w-10 h-10" strokeWidth={1.5} />}
-                        {activeTab === 'CONSULTATION' && <Users className="text-white w-10 h-10" strokeWidth={1.5} />}
+                    <button 
+                      onClick={() => setSelectedItem(null)}
+                      className="md:hidden mb-8 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors relative z-10"
+                    >
+                      <ArrowLeft className="w-5 h-5" strokeWidth={1.5} />
+                      <span className="text-xs font-black uppercase tracking-widest">Voltar para lista</span>
+                    </button>
+
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 mb-8 relative z-10">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 border border-white/20 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] shrink-0">
+                        {activeTab === 'ALMANAC' && <Stethoscope className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'SCALES' && <ClipboardCheck className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'TERMS' && <Book className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'PHARMA' && <Pill className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'PRESCRIPTION' && <FileSignature className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'CONSULTATION' && <Users className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
                       </div>
                       <div>
-                        <h3 className="text-5xl font-black text-white tracking-tighter">{selectedItem.name || selectedItem.term || selectedItem.condition || selectedItem.title}</h3>
-                        <p className="text-lg text-zinc-400 font-bold uppercase tracking-widest mt-2">
+                        <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">{selectedItem.name || selectedItem.term || selectedItem.condition || selectedItem.title}</h3>
+                        <p className="text-sm md:text-lg text-zinc-400 font-bold uppercase tracking-widest mt-2">
                           {selectedItem.category || (activeTab === 'TERMS' ? 'Terminologia Técnica' : selectedItem.class)}
                         </p>
                       </div>
