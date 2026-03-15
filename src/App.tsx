@@ -22,7 +22,8 @@ import {
   Users,
   ArrowLeft,
   Moon,
-  Sun
+  Sun,
+  FileText
 } from 'lucide-react';
 import { pathologies, Pathology } from './data/pathologies';
 import { technicalTerms, TechnicalTerm } from './data/terms';
@@ -114,7 +115,7 @@ export default function App() {
 
   if (activeTab === 'HOME') {
     return (
-      <div className="min-h-screen bg-bg-dark text-zinc-100 font-sans flex flex-col items-center justify-center p-6 overflow-hidden relative transition-colors duration-300">
+      <div className="min-h-[100dvh] bg-bg-dark text-zinc-100 font-sans flex flex-col items-center justify-center p-6 overflow-hidden relative transition-colors duration-300">
         {/* Theme Toggle */}
         <button 
           onClick={() => setIsLightMode(!isLightMode)}
@@ -146,7 +147,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-3 md:gap-6">
             <HomeButton 
               icon={<BookOpen className="w-6 h-6" strokeWidth={1.5} />} 
               label="Almanaque" 
@@ -188,7 +189,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark text-zinc-100 font-sans flex overflow-hidden">
+    <div className="h-[100dvh] bg-bg-dark text-zinc-100 font-sans flex overflow-hidden transition-colors duration-300">
       {/* Sidebar Mobile Toggle */}
       <div className="lg:hidden fixed top-6 right-6 z-50 flex gap-3">
         <button 
@@ -207,10 +208,10 @@ export default function App() {
 
       {/* Sidebar Navigation */}
       <aside className={cn(
-        "fixed inset-y-0 left-0 z-40 w-80 bg-card-dark border-r border-border-dark transition-transform lg:translate-x-0 lg:static lg:block shrink-0",
+        "fixed inset-y-0 left-0 z-40 w-80 bg-card-dark border-r border-border-dark transition-transform lg:translate-x-0 lg:static lg:block shrink-0 flex flex-col",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="p-10 border-b border-border-dark relative">
+        <div className="p-10 border-b border-border-dark relative shrink-0">
           <button 
             onClick={() => setIsLightMode(!isLightMode)}
             className="hidden lg:flex absolute top-10 right-8 p-2 bg-white/5 border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors"
@@ -229,7 +230,7 @@ export default function App() {
           <p className="text-[10px] text-zinc-600 uppercase tracking-[0.4em] font-black">Clinical Almanac v6.1</p>
         </div>
 
-        <nav className="p-8 space-y-4 overflow-y-auto h-[calc(100vh-250px)] no-scrollbar">
+        <nav className="p-8 space-y-4 overflow-y-auto flex-1 no-scrollbar pb-32">
           <SidebarButton 
             active={activeTab === 'ALMANAC'} 
             onClick={() => handleTabChange('ALMANAC')} 
@@ -268,7 +269,7 @@ export default function App() {
           />
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-10 border-t border-border-dark bg-card-dark">
+        <div className="p-10 border-t border-border-dark bg-card-dark shrink-0">
           <div className="flex items-center gap-3 opacity-40">
             <ShieldAlert className="w-4 h-4 text-white" strokeWidth={1.5} />
             <span className="text-[9px] uppercase tracking-[0.3em] font-black">Evidência Científica</span>
@@ -277,7 +278,7 @@ export default function App() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col h-screen overflow-hidden bg-bg-dark">
+      <main className="flex-1 flex flex-col h-[100dvh] min-w-0 overflow-hidden bg-bg-dark">
         {/* Header / Search */}
         <header className={cn("bg-card-dark/50 backdrop-blur-xl border-b border-border-dark p-10 flex-col gap-8", selectedItem ? "hidden md:flex" : "flex")}>
           <div className="flex items-center justify-between">
@@ -344,7 +345,7 @@ export default function App() {
                 key={activeTab}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="divide-y divide-border-dark"
+                className="divide-y divide-border-dark pb-32"
               >
                 {activeTab === 'ALMANAC' && filteredPathologies.map(p => (
                   <ListItem 
@@ -630,11 +631,18 @@ export default function App() {
                             ))}
                           </ul>
                         </Section>
+                        {selectedItem.exampleRecord && (
+                          <Section title="Exemplo de Evolução / Registro" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />}>
+                            <div className="bg-white/5 p-5 md:p-8 rounded-3xl md:rounded-[2.5rem] border border-white/20">
+                              <p className="text-xs md:text-lg text-white font-mono leading-relaxed whitespace-pre-wrap">{selectedItem.exampleRecord}</p>
+                            </div>
+                          </Section>
+                        )}
                       </>
                     )}
                   </div>
 
-                  <footer className="pt-20 pb-16 text-center border-t border-border-dark">
+                  <footer className="pt-20 pb-32 text-center border-t border-border-dark">
                     <p className="text-[10px] text-zinc-700 font-black uppercase tracking-[0.8em]">NurseIQ Clinical Database // Evidence-Based Protocols // v6.1.0</p>
                   </footer>
                 </motion.div>
@@ -661,12 +669,12 @@ function HomeButton({ icon, label, onClick }: { icon: React.ReactNode, label: st
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
-      className="neon-button flex flex-col items-center gap-6 p-10 group"
+      className="neon-button flex flex-col items-center gap-3 md:gap-6 p-4 md:p-10 group"
     >
-      <div className="w-16 h-16 bg-border-dark border border-zinc-800 rounded-[2rem] flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all shadow-2xl">
-        <div className="text-zinc-500 group-hover:text-black transition-colors">{icon}</div>
+      <div className="w-12 h-12 md:w-16 md:h-16 bg-border-dark border border-zinc-800 rounded-2xl md:rounded-[2rem] flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all shadow-2xl">
+        <div className="text-zinc-500 group-hover:text-black transition-colors scale-75 md:scale-100">{icon}</div>
       </div>
-      <span className="font-black uppercase tracking-[0.3em] text-[10px] text-zinc-500 group-hover:text-white transition-colors">{label}</span>
+      <span className="font-black uppercase tracking-widest md:tracking-[0.3em] text-[8px] md:text-[10px] text-zinc-500 group-hover:text-white transition-colors">{label}</span>
     </motion.button>
   );
 }

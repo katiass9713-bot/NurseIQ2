@@ -4,6 +4,7 @@ export interface ConsultationTopic {
   title: string;
   content: string;
   details: string[];
+  exampleRecord?: string;
 }
 
 export const consultations: ConsultationTopic[] = [
@@ -18,7 +19,8 @@ export const consultations: ConsultationTopic[] = [
       'Decúbito Lateral: Deitado de lado (direito ou esquerdo).',
       'Posição de Fowler: Cabeceira elevada (45º a 60º).',
       'Posição de Trendelenburg: Cabeça mais baixa que os pés.'
-    ]
+    ],
+    exampleRecord: '14:30 - Paciente posicionado em decúbito dorsal horizontal no leito, alinhamento corporal mantido. Orientado quanto à necessidade de repouso nesta posição por 2 horas após o procedimento. Sem queixas álgicas no momento. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '2',
@@ -31,7 +33,8 @@ export const consultations: ConsultationTopic[] = [
       'Estado vacinal: Conferência da caderneta de vacinação.',
       'Aleitamento materno e alimentação complementar.',
       'Orientações de prevenção de acidentes.'
-    ]
+    ],
+    exampleRecord: '09:00 - Comparece à consulta de puericultura (6 meses), acompanhado da mãe. Mãe relata AME e introdução alimentar iniciada há 1 semana com boa aceitação. Ao exame: ativo, reativo, sorri, senta com apoio, tenta alcançar objetos. Peso: 7,2kg (Z-score 0), Estatura: 66cm (Z-score 0), PC: 43cm. Reflexos presentes e simétricos. Fontanela anterior normotensa (1x1cm). Pele íntegra, corada. Abdome flácido, RHA+. Eliminações fisiológicas presentes segundo a mãe. Conduta: Orientada sobre continuidade da IA e manutenção do aleitamento. Vacinas do 6º mês atualizadas nesta data. Retorno agendado para o 9º mês. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '3',
@@ -44,7 +47,8 @@ export const consultations: ConsultationTopic[] = [
       'Solicitação e avaliação de exames de rotina (Tipagem sanguínea, VDRL, HIV, Toxoplasmose, Hepatites, Urina, USG).',
       'Suplementação de Ácido Fólico e Sulfato Ferroso.',
       'Orientações sobre sinais de alarme e preparo para o parto.'
-    ]
+    ],
+    exampleRecord: '10:15 - Gestante, 24 anos, G2P1A0, comparece para 3ª consulta de pré-natal. IG: 28 semanas e 3 dias (DUM). Queixa de pirose e edema leve em MMII no fim do dia. Nega sangramento, perda de líquido ou contrações. Ao exame: Corada, hidratada, eupneica. PA: 110x70 mmHg, FC: 82 bpm, Peso: 68kg (+1,5kg desde a última consulta). Abdome gravídico, AU: 27cm. BCF: 144 bpm no QIE. Dinâmica uterina ausente. Edema em MMII (+/4+). Exames do 2º trimestre avaliados, sem alterações. Conduta: Orientada sobre fracionamento da dieta, elevação dos MMII ao repouso e sinais de alarme para procurar a maternidade. Mantida prescrição de Sulfato Ferroso. Retorno agendado em 4 semanas. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '4',
@@ -56,7 +60,8 @@ export const consultations: ConsultationTopic[] = [
       'O (Objetivo): O que o profissional observa (sinais vitais, exame físico, exames).',
       'A (Avaliação): Análise dos dados subjetivos e objetivos (diagnósticos de enfermagem).',
       'P (Plano): Condutas, prescrições de enfermagem e orientações.'
-    ]
+    ],
+    exampleRecord: 'S: Paciente refere "dor de cabeça forte latejante" e náuseas desde a manhã. Nega vômitos.\nO: Consciente, orientada, fácies de dor. PA: 140x90 mmHg, FC: 88 bpm, FR: 18 irpm, Tax: 36,8ºC, Dor: 8/10. Pupilas isocóricas e fotorreagentes.\nA: Dor aguda relacionada a processo neurológico/vascular evidenciada por relato verbal e fácies de dor.\nP: Administrado analgésico SN conforme prescrição médica. Mantido ambiente calmo e com pouca luz. Reavaliar dor em 30 minutos. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '5',
@@ -67,7 +72,8 @@ export const consultations: ConsultationTopic[] = [
       'Série Vermelha: Hemácias, Hemoglobina, Hematócrito, VCM, HCM, CHCM, RDW (avaliação de anemias).',
       'Série Branca: Leucócitos totais, Neutrófilos, Linfócitos, Monócitos, Eosinófilos, Basófilos (avaliação de infecções/inflamações).',
       'Plaquetas: Avaliação da coagulação (trombocitopenia/trombocitose).'
-    ]
+    ],
+    exampleRecord: '11:00 - Avaliado resultado de hemograma de hoje: Hb 8,5 g/dL, Ht 26% (anemia), Leucócitos 14.500/mm³ com 8% de bastões (leucocitose com desvio à esquerda sugerindo infecção aguda), Plaquetas 180.000/mm³ (normais). Comunicado achados ao médico plantonista Dr. Silva, que prescreveu nova antibioticoterapia e concentrado de hemácias. Início do preparo para transfusão conforme protocolo institucional. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '6',
@@ -79,7 +85,8 @@ export const consultations: ConsultationTopic[] = [
       'Desbridamento: Autolítico (hidrogel), Enzimático (colagenase), Mecânico ou Instrumental.',
       'Coberturas: Alginato, Hidrocolóide, Espuma de Poliuretano, Prata, Carvão Ativado.',
       'Avaliação da lesão: Tamanho, exsudato, tecido (granulação, esfacelo, necrose), bordas.'
-    ]
+    ],
+    exampleRecord: '08:30 - Realizado curativo em úlcera venosa em MMIE (região maleolar medial). Retirada cobertura anterior saturada com exsudato serosanguinolento moderado. Limpeza com SF 0,9% em jato. Leito da ferida com 80% de tecido de granulação vermelho vivo e 20% de esfacelo amarelado aderido. Bordas regulares e maceração perilesional leve. Mensuração: 4x3cm. Aplicado hidrogel no esfacelo e coberto com espuma de poliuretano. Fixado com atadura de crepom. Paciente tolerou bem o procedimento, sem queixas de dor (EVA 2/10). -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '7',
@@ -92,7 +99,8 @@ export const consultations: ConsultationTopic[] = [
       'Manguito adequado à circunferência do braço.',
       'Palpar pulso radial, inflar até o desaparecimento do pulso para estimar PAS.',
       'Desinflar, aguardar 1 minuto, inflar 30 mmHg acima da PAS estimada e auscultar com estetoscópio.'
-    ]
+    ],
+    exampleRecord: '16:45 - Paciente relata tontura e cefaleia nucal. Posicionado em decúbito dorsal com cabeceira a 45º. Aferida PA em MSE (160x100 mmHg) e MSD (158x98 mmHg) após 5 minutos de repouso. FC: 92 bpm. Comunicado enfermeiro plantonista e administrado Captopril 25mg VO conforme prescrição médica de "se necessário". Mantido em repouso e observação. -- Tec. Enf. Nome / Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '8',
@@ -105,7 +113,8 @@ export const consultations: ConsultationTopic[] = [
       'Avaliação cognitiva (Mini Exame do Estado Mental - MEEM).',
       'Revisão de medicamentos (polifarmácia).',
       'Avaliação nutricional e de saúde bucal.'
-    ]
+    ],
+    exampleRecord: '14:00 - Consulta de enfermagem ao idoso (78 anos), acompanhado da filha. Relata esquecimentos recentes e duas quedas no último semestre em domicílio. Independente para AVDs básicas, mas necessita auxílio para AIVDs (finanças, compras). MEEM: 22/30 (escolaridade 4 anos - sugestivo de declínio cognitivo leve). Teste Timed Up and Go (TUG): 15 segundos (alto risco de quedas). Traz receita com 8 medicamentos (polifarmácia). PA: 130x80 mmHg. Conduta: Orientada filha sobre adaptações ambientais para prevenção de quedas (retirar tapetes, iluminação noturna). Encaminhado para avaliação geriátrica e revisão farmacoterapêutica. Agendado retorno em 2 meses. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '9',
@@ -117,7 +126,8 @@ export const consultations: ConsultationTopic[] = [
       'A (Vias Aéreas): Abertura das vias aéreas (elevação do queixo/tração da mandíbula).',
       'B (Boa Ventilação): 2 ventilações a cada 30 compressões (se treinado).',
       'D (Desfibrilação): Uso do DEA assim que disponível.'
-    ]
+    ],
+    exampleRecord: '10:05 - Paciente encontrado irresponsivo no leito, sem pulso central e em apneia. Acionado código azul. Iniciadas manobras de RCP de alta qualidade (compressões torácicas). 10:07 - Chegada do carrinho de emergência e equipe médica. Instalado monitor: ritmo de Fibrilação Ventricular (FV). 10:08 - Aplicado 1 choque (200J) bifásico, seguido de RCP imediata. Puncionado AVP em MSE e administrado Epinefrina 1mg EV. 10:10 - Checado pulso: pulso carotídeo presente, ritmo sinusal no monitor. Retorno da Circulação Espontânea (RCE). Paciente intubado pelo médico e transferido para UTI. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '10',
@@ -129,7 +139,8 @@ export const consultations: ConsultationTopic[] = [
       'Periodicidade: Anual, após dois exames anuais negativos, a cada 3 anos.',
       'Coleta da ectocérvice (espátula de Ayre) e endocérvice (escova endocervical).',
       'Fixação imediata da lâmina.'
-    ]
+    ],
+    exampleRecord: '09:30 - Paciente, 35 anos, comparece para coleta de preventivo de rotina. DUM: 10/05/2023. Nega queixas ginecológicas. Ao exame especular: colo uterino de aspecto epitelizado, sem lesões macroscópicas, orifício externo em fenda. Secreção vaginal fisiológica, em pequena quantidade, cor branca, sem odor. Realizada coleta dupla (ectocérvice com espátula de Ayre e endocérvice com escova) sem intercorrências. Lâmina fixada e identificada. Orientada sobre prazo de entrega do resultado (30 dias) e importância do retorno. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '11',
@@ -143,7 +154,8 @@ export const consultations: ConsultationTopic[] = [
       'Sibilos: Som agudo, musical, indica broncoespasmo (asma, DPOC).',
       'Roncos: Som grave, indica secreção espessa em vias aéreas de grande calibre.',
       'Estridor: Som agudo e intenso na inspiração, indica obstrução de vias aéreas superiores.'
-    ]
+    ],
+    exampleRecord: '15:20 - Paciente evolui com dispneia e tosse produtiva. Ao exame físico respiratório: Tórax simétrico, expansibilidade diminuída em base direita. FR: 26 irpm, SpO2: 91% em ar ambiente. À ausculta pulmonar: Murmúrio vesicular diminuído globalmente, com presença de estertores crepitantes em base pulmonar direita e sibilos esparsos bilateralmente. Instalado cateter nasal de O2 a 2L/min conforme prescrição, com melhora da saturação para 96%. Elevada cabeceira (Fowler). Comunicado médico plantonista sobre os achados. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '12',
@@ -156,7 +168,8 @@ export const consultations: ConsultationTopic[] = [
       'Resposta Motora (1-6): Obedece comandos (6), Localiza dor (5), Flexão normal (4), Flexão anormal/Decorticação (3), Extensão/Descerebração (2), Ausente (1).',
       'Reatividade Pupilar (-2 a 0): Ambas reagem (0), Uma reage (-1), Nenhuma reage (-2).',
       'Avaliação Pupilar (Tamanho): Isocóricas (iguais), Anisocóricas (diferentes), Miose (contraídas), Midríase (dilatadas).'
-    ]
+    ],
+    exampleRecord: '20:00 - Paciente vítima de TCE grave, em leito de UTI. Sedação suspensa há 2 horas para avaliação neurológica. ECG: 6 (Abertura ocular à dor: 2, Resposta verbal ausente/intubado: 1T, Resposta motora de flexão anormal/decorticação: 3). Pupilas anisocóricas (D: 4mm, E: 2mm), pupila direita fotorreagente lenta, esquerda fotorreagente rápida. Mantém ventilação mecânica. Sinais vitais: PA 160x90 mmHg, FC 55 bpm (bradicardia), FR 14 irpm (ritmo do ventilador). Sinais sugestivos de hipertensão intracraniana comunicados imediatamente ao neurocirurgião de plantão. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '13',
@@ -168,7 +181,8 @@ export const consultations: ConsultationTopic[] = [
       'Sonda Nasoenteral (SNE): Confirmar posicionamento por RX antes da dieta, manter cabeceira elevada (30-45º) durante e após dieta, lavar com água (20-30ml) após medicações.',
       'Dreno de Tórax: Manter selo d\'água (2cm), observar oscilação e borbulhamento, não pinçar durante transporte (exceto se houver indicação específica), avaliar débito.',
       'Dreno de Port-o-Vac/Jackson-Pratt: Manter vácuo contínuo, esvaziar quando atingir 1/2 a 2/3 da capacidade, registrar volume e aspecto.'
-    ]
+    ],
+    exampleRecord: '07:30 - Recebo plantão com paciente no 2º DPO de laparotomia exploradora. SNE em narina direita, fixação limpa e íntegra, recebendo dieta enteral a 40ml/h em BIC, boa aceitação, sem resíduo gástrico. SVD pérvia, drenando urina amarelo-claro, límpida, volume de 450ml em 12h. Dreno de Port-o-vac em flanco direito, com vácuo mantido, drenando 30ml de secreção serosanguinolenta. Curativo da inserção do dreno limpo e seco. Realizada higiene íntima e troca da fixação da SVD. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '14',
@@ -182,7 +196,8 @@ export const consultations: ConsultationTopic[] = [
       'Estágio 4: Perda de espessura total dos tecidos, osso, tendão ou músculo exposto.',
       'Prevenção: Mudança de decúbito a cada 2h, hidratação da pele, uso de colchão piramidal, proteção de proeminências ósseas.',
       'Tratamento: Debridamento (se necrose), curativos com hidrocoloide, alginato ou hidrogel dependendo do exsudato.'
-    ]
+    ],
+    exampleRecord: '11:00 - Durante banho no leito, inspecionada pele do paciente restrito ao leito. Identificada LPP Estágio 2 em região sacral, medindo 2x2cm, leito rosado, sem exsudato, bordas regulares. Pele perilesional íntegra. Realizada limpeza com SF 0,9% morno e aplicado curativo de hidrocoloide placa. Aplicado AGE em proeminências ósseas (calcâneos, trocânteres e cotovelos) e instalado colchão pneumático. Realizada mudança de decúbito para lateral direito. Orientado acompanhante sobre a importância da mudança de decúbito a cada 2 horas. -- Enf. Nome (COREN-XX 12345)'
   },
   {
     id: '15',
@@ -199,6 +214,7 @@ export const consultations: ConsultationTopic[] = [
       'Onda P: Despolarização atrial.',
       'Complexo QRS: Despolarização ventricular.',
       'Onda T: Repolarização ventricular.'
-    ]
+    ],
+    exampleRecord: '08:15 - Paciente admitido no PS com queixa de dor torácica típica (em aperto, irradiada para MSE). Imediatamente posicionado em maca, instalado monitorização multiparamétrica e oxigênio sob cateter nasal a 2L/min. Realizado ECG de 12 derivações em menos de 10 minutos da admissão. Traçado entregue em mãos ao médico plantonista Dr. Carlos, que evidenciou supradesnivelamento do segmento ST em parede inferior (DII, DIII, aVF). Puncionado AVP calibroso em MSE e administrado AAS 300mg e Clopidogrel 300mg VO conforme prescrição médica. Aguardando vaga na Hemodinâmica. -- Enf. Nome (COREN-XX 12345)'
   }
 ];
