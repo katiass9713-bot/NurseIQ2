@@ -20,7 +20,9 @@ import {
   ClipboardCheck,
   FileSignature,
   Users,
-  ArrowLeft
+  ArrowLeft,
+  Moon,
+  Sun
 } from 'lucide-react';
 import { pathologies, Pathology } from './data/pathologies';
 import { technicalTerms, TechnicalTerm } from './data/terms';
@@ -38,6 +40,15 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  React.useEffect(() => {
+    if (isLightMode) {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  }, [isLightMode]);
 
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -103,7 +114,15 @@ export default function App() {
 
   if (activeTab === 'HOME') {
     return (
-      <div className="min-h-screen bg-bg-dark text-zinc-100 font-sans flex flex-col items-center justify-center p-6 overflow-hidden relative">
+      <div className="min-h-screen bg-bg-dark text-zinc-100 font-sans flex flex-col items-center justify-center p-6 overflow-hidden relative transition-colors duration-300">
+        {/* Theme Toggle */}
+        <button 
+          onClick={() => setIsLightMode(!isLightMode)}
+          className="absolute top-6 right-6 z-50 p-3 bg-card-dark border border-white/20 rounded-full shadow-2xl text-white hover:scale-110 transition-transform"
+        >
+          {isLightMode ? <Moon strokeWidth={1.5} className="w-5 h-5" /> : <Sun strokeWidth={1.5} className="w-5 h-5" />}
+        </button>
+
         {/* Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
         
@@ -171,19 +190,33 @@ export default function App() {
   return (
     <div className="min-h-screen bg-bg-dark text-zinc-100 font-sans flex overflow-hidden">
       {/* Sidebar Mobile Toggle */}
-      <button 
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-6 right-6 z-50 p-3 bg-card-dark border border-white/30 rounded-3xl shadow-2xl text-white"
-      >
-        {isSidebarOpen ? <X strokeWidth={1.5} /> : <Menu strokeWidth={1.5} />}
-      </button>
+      <div className="lg:hidden fixed top-6 right-6 z-50 flex gap-3">
+        <button 
+          onClick={() => setIsLightMode(!isLightMode)}
+          className="p-3 bg-card-dark border border-white/30 rounded-full shadow-2xl text-white"
+        >
+          {isLightMode ? <Moon strokeWidth={1.5} className="w-5 h-5" /> : <Sun strokeWidth={1.5} className="w-5 h-5" />}
+        </button>
+        <button 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="p-3 bg-card-dark border border-white/30 rounded-full shadow-2xl text-white"
+        >
+          {isSidebarOpen ? <X strokeWidth={1.5} className="w-5 h-5" /> : <Menu strokeWidth={1.5} className="w-5 h-5" />}
+        </button>
+      </div>
 
       {/* Sidebar Navigation */}
       <aside className={cn(
         "fixed inset-y-0 left-0 z-40 w-80 bg-card-dark border-r border-border-dark transition-transform lg:translate-x-0 lg:static lg:block shrink-0",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="p-10 border-b border-border-dark">
+        <div className="p-10 border-b border-border-dark relative">
+          <button 
+            onClick={() => setIsLightMode(!isLightMode)}
+            className="hidden lg:flex absolute top-10 right-8 p-2 bg-white/5 border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors"
+          >
+            {isLightMode ? <Moon strokeWidth={1.5} className="w-4 h-4" /> : <Sun strokeWidth={1.5} className="w-4 h-4" />}
+          </button>
           <button 
             onClick={() => handleTabChange('HOME')}
             className="flex items-center gap-4 mb-2 group"
@@ -305,13 +338,13 @@ export default function App() {
         {/* Content Area */}
         <div className="flex-1 flex overflow-hidden">
           {/* List View */}
-          <div className={cn("w-full md:w-96 border-r border-[#1A1A1A] overflow-y-auto bg-[#0A0A0A]/30 shrink-0 no-scrollbar", selectedItem ? "hidden md:block" : "block")}>
+          <div className={cn("w-full md:w-96 border-r border-border-dark overflow-y-auto bg-card-dark/30 shrink-0 no-scrollbar", selectedItem ? "hidden md:block" : "block")}>
             <AnimatePresence mode="wait">
               <motion.div 
                 key={activeTab}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="divide-y divide-[#1A1A1A]"
+                className="divide-y divide-border-dark"
               >
                 {activeTab === 'ALMANAC' && filteredPathologies.map(p => (
                   <ListItem 
