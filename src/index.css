@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-neon-green: #00FF00;
+  --color-bg-dark: #050505;
+  --color-card-dark: #0A0A0A;
+  --color-border-dark: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-zinc-100 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border border-neon-green/30 rounded-2xl bg-white/5 backdrop-blur-xl transition-all duration-300;
+  }
+
+  .neon-border-active {
+    @apply border-neon-green shadow-[0_0_20px_rgba(0,255,0,0.3)] bg-neon-green/5;
+  }
+
+  .neon-button {
+    @apply border border-border-dark bg-card-dark rounded-2xl transition-all duration-300 hover:border-neon-green hover:shadow-[0_0_15px_rgba(0,255,0,0.2)];
+  }
+
+  .neon-border:hover {
+    @apply border-neon-green shadow-[0_0_15px_rgba(0,255,0,0.2)];
+  }
+  
+  .display-text {
+    @apply font-display tracking-tight;
+  }
+
+  .glass-card {
+    @apply bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+

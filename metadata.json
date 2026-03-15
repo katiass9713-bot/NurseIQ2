@@ -1,0 +1,5 @@
+{
+  "name": "NurseIQ",
+  "description": "Um assistente clínico para enfermagem com estética Pac-Man, gerando diagnósticos, prescrições e cuidados baseados em dados do paciente.",
+  "requestFramePermissions": []
+}
