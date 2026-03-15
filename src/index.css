@@ -6,7 +6,7 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-neon-green: #00FF00;
+  --color-neon-green: #ffffff;
   --color-bg-dark: #050505;
   --color-card-dark: #0A0A0A;
   --color-border-dark: #1A1A1A;
@@ -20,19 +20,19 @@
 
 @layer components {
   .neon-border {
-    @apply border border-neon-green/30 rounded-2xl bg-white/5 backdrop-blur-xl transition-all duration-300;
+    @apply border border-white/30 rounded-[3rem] bg-white/5 backdrop-blur-xl transition-all duration-300;
   }
 
   .neon-border-active {
-    @apply border-neon-green shadow-[0_0_20px_rgba(0,255,0,0.3)] bg-neon-green/5;
+    @apply border-white shadow-[0_0_20px_rgba(255,255,255,0.3)] bg-white/5;
   }
 
   .neon-button {
-    @apply border border-border-dark bg-card-dark rounded-2xl transition-all duration-300 hover:border-neon-green hover:shadow-[0_0_15px_rgba(0,255,0,0.2)];
+    @apply border border-border-dark bg-card-dark rounded-[3rem] transition-all duration-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.2)];
   }
 
   .neon-border:hover {
-    @apply border-neon-green shadow-[0_0_15px_rgba(0,255,0,0.2)];
+    @apply border-white shadow-[0_0_15px_rgba(255,255,255,0.2)];
   }
   
   .display-text {
@@ -40,7 +40,7 @@
   }
 
   .glass-card {
-    @apply bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md;
+    @apply bg-white/5 border border-white/10 rounded-[3rem] backdrop-blur-md;
   }
 
   .no-scrollbar::-webkit-scrollbar {
