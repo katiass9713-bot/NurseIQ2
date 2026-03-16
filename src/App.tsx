@@ -222,8 +222,8 @@ export default function App() {
             onClick={() => handleTabChange('HOME')}
             className="flex items-center gap-4 mb-2 group"
           >
-            <div className="w-12 h-12 bg-white/5 border border-white/20 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Activity className="text-white w-7 h-7" strokeWidth={1.5} />
+            <div className="text-white group-hover:scale-110 transition-transform">
+              <Activity className="w-7 h-7" strokeWidth={1.5} />
             </div>
             <h1 className="font-black tracking-tight text-2xl">NurseIQ <span className="text-white">Pro</span></h1>
           </button>
@@ -441,13 +441,13 @@ export default function App() {
                     </button>
 
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 mb-8 relative z-10">
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 border border-white/20 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] shrink-0">
-                        {activeTab === 'ALMANAC' && <Stethoscope className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
-                        {activeTab === 'SCALES' && <ClipboardCheck className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
-                        {activeTab === 'TERMS' && <Book className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
-                        {activeTab === 'PHARMA' && <Pill className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
-                        {activeTab === 'PRESCRIPTION' && <FileSignature className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
-                        {activeTab === 'CONSULTATION' && <Users className="text-white w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                      <div className="text-white shrink-0">
+                        {activeTab === 'ALMANAC' && <Stethoscope className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'SCALES' && <ClipboardCheck className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'TERMS' && <Book className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'PHARMA' && <Pill className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'PRESCRIPTION' && <FileSignature className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
+                        {activeTab === 'CONSULTATION' && <Users className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
                       </div>
                       <div>
                         <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">{selectedItem.name || selectedItem.term || selectedItem.condition || selectedItem.title}</h3>
@@ -470,11 +470,11 @@ export default function App() {
                   <div className="grid grid-cols-1 gap-10">
                     {activeTab === 'ALMANAC' && (
                       <>
-                        <Section title="Fisiopatologia" icon={<Brain className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Fisiopatologia" icon={<Brain className="w-6 h-6" strokeWidth={1.5} />}>
                           <p className="text-zinc-400 leading-relaxed text-xl font-medium">{selectedItem.pathophysiology}</p>
                         </Section>
 
-                        <Section title="Sinais e Sintomas" icon={<Thermometer className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Sinais e Sintomas" icon={<Thermometer className="w-6 h-6" strokeWidth={1.5} />}>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {selectedItem.signsSymptoms.map((s: string) => (
                               <div key={s} className="flex items-center gap-4 text-lg text-zinc-300 font-semibold bg-card-dark p-6 rounded-[2rem] border border-border-dark">
@@ -485,21 +485,21 @@ export default function App() {
                         </Section>
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                          <Section title="NANDA" icon={<ShieldAlert className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="NANDA" icon={<ShieldAlert className="w-6 h-6" strokeWidth={1.5} />}>
                             <ul className="space-y-4">
                               {selectedItem.nanda.map((n: string) => (
                                 <li key={n} className="text-sm text-zinc-400 font-bold italic border-l-2 border-white pl-4">{n}</li>
                               ))}
                             </ul>
                           </Section>
-                          <Section title="NIC" icon={<Activity className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="NIC" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
                             <ul className="space-y-4">
                               {selectedItem.nic.map((n: string) => (
                                 <li key={n} className="text-sm text-zinc-300 font-bold bg-border-dark p-4 rounded-[1.5rem] border border-zinc-800">{n}</li>
                               ))}
                             </ul>
                           </Section>
-                          <Section title="NOC" icon={<HeartPulse className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="NOC" icon={<HeartPulse className="w-6 h-6" strokeWidth={1.5} />}>
                             <ul className="space-y-4">
                               {selectedItem.noc.map((n: string) => (
                                 <li key={n} className="text-sm text-zinc-400 font-bold border-b border-border-dark pb-3">{n}</li>
@@ -508,7 +508,7 @@ export default function App() {
                           </Section>
                         </div>
 
-                        <Section title="Farmacologia Aplicada" icon={<Pill className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Farmacologia Aplicada" icon={<Pill className="w-6 h-6" strokeWidth={1.5} />}>
                           <div className="bg-card-dark text-white p-8 rounded-[2rem] font-mono text-base leading-relaxed border border-white/20 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)]">
                             {selectedItem.pharmacology}
                           </div>
@@ -518,11 +518,11 @@ export default function App() {
 
                     {activeTab === 'SCALES' && (
                       <>
-                        <Section title="Descrição" icon={<Info className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Descrição" icon={<Info className="w-6 h-6" strokeWidth={1.5} />}>
                           <p className="text-zinc-400 leading-relaxed text-xl font-medium">{selectedItem.description}</p>
                         </Section>
                         
-                        <Section title="Parâmetros de Avaliação" icon={<LayoutList className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Parâmetros de Avaliação" icon={<LayoutList className="w-6 h-6" strokeWidth={1.5} />}>
                           <div className="grid grid-cols-1 gap-4">
                             {selectedItem.parameters.map((p: string) => (
                               <div key={p} className="bg-card-dark p-6 rounded-[2rem] border border-border-dark text-zinc-300 font-bold">
@@ -533,12 +533,12 @@ export default function App() {
                         </Section>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                          <Section title="Interpretação" icon={<Activity className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Interpretação" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 border border-white/20 p-8 rounded-[2.5rem] text-white font-black text-lg">
                               {selectedItem.interpretation}
                             </div>
                           </Section>
-                          <Section title="Aplicação" icon={<ClipboardCheck className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Aplicação" icon={<ClipboardCheck className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-border-dark border border-zinc-800 p-8 rounded-[2.5rem] text-zinc-400 font-bold text-lg">
                               {selectedItem.application}
                             </div>
@@ -548,31 +548,31 @@ export default function App() {
                     )}
 
                     {activeTab === 'TERMS' && (
-                      <Section title="Definição Técnica" icon={<Info className="w-5 h-5" strokeWidth={1.5} />}>
+                      <Section title="Definição Técnica" icon={<Info className="w-6 h-6" strokeWidth={1.5} />}>
                         <p className="text-3xl text-zinc-200 leading-relaxed font-serif italic">"{selectedItem.definition}"</p>
                       </Section>
                     )}
 
                     {activeTab === 'PHARMA' && (
                       <>
-                        <Section title="Indicação Clínica" icon={<Info className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Indicação Clínica" icon={<Info className="w-6 h-6" strokeWidth={1.5} />}>
                           <p className="text-xl text-zinc-300 font-semibold">{selectedItem.indication}</p>
                         </Section>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                          <Section title="Diluição e Preparo" icon={<FlaskConical className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Diluição e Preparo" icon={<FlaskConical className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/20">
                               <p className="text-lg text-white font-black leading-relaxed">{selectedItem.dilution}</p>
                             </div>
                           </Section>
-                          <Section title="Posologia / Dose" icon={<Activity className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Posologia / Dose" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/20">
                               <p className="text-lg text-white font-black leading-relaxed">{selectedItem.dosage}</p>
                             </div>
                           </Section>
                         </div>
 
-                        <Section title="Cuidados de Enfermagem" icon={<ShieldAlert className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Cuidados de Enfermagem" icon={<ShieldAlert className="w-6 h-6" strokeWidth={1.5} />}>
                           <ul className="space-y-6">
                             {selectedItem.nursingCare.map((c: string) => (
                               <li key={c} className="flex gap-6 text-lg text-zinc-300 font-bold bg-card-dark p-8 rounded-[2rem] border border-border-dark shadow-2xl">
@@ -599,16 +599,16 @@ export default function App() {
                           )}
                         </div>
 
-                        <Section title="Indicação" icon={<Info className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Indicação" icon={<Info className="w-6 h-6" strokeWidth={1.5} />}>
                           <p className="text-xl text-zinc-300 font-semibold">{selectedItem.condition}</p>
                         </Section>
                         <div className="grid grid-cols-1 gap-10">
-                          <Section title="Posologia / Dose" icon={<Activity className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Posologia / Dose" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/20">
                               <p className="text-lg text-white font-black leading-relaxed">{selectedItem.dosage}</p>
                             </div>
                           </Section>
-                          <Section title="Instruções" icon={<ClipboardCheck className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Instruções" icon={<ClipboardCheck className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-border-dark p-8 rounded-[2.5rem] border border-zinc-800">
                               <p className="text-lg text-zinc-300 font-medium leading-relaxed">{selectedItem.instructions}</p>
                             </div>
@@ -619,10 +619,10 @@ export default function App() {
 
                     {activeTab === 'CONSULTATION' && (
                       <>
-                        <Section title="Conteúdo" icon={<BookOpen className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Conteúdo" icon={<BookOpen className="w-6 h-6" strokeWidth={1.5} />}>
                           <p className="text-xl text-zinc-300 font-medium leading-relaxed">{selectedItem.content}</p>
                         </Section>
-                        <Section title="Detalhes" icon={<LayoutList className="w-5 h-5" strokeWidth={1.5} />}>
+                        <Section title="Detalhes" icon={<LayoutList className="w-6 h-6" strokeWidth={1.5} />}>
                           <ul className="space-y-4">
                             {selectedItem.details.map((d: string) => (
                               <li key={d} className="text-lg text-zinc-400 font-medium bg-card-dark p-6 rounded-[2rem] border border-border-dark">
@@ -632,7 +632,7 @@ export default function App() {
                           </ul>
                         </Section>
                         {selectedItem.exampleRecord && (
-                          <Section title="Exemplo de Evolução / Registro" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />}>
+                          <Section title="Exemplo de Evolução / Registro" icon={<FileText className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 p-5 md:p-8 rounded-3xl md:rounded-[2.5rem] border border-white/20">
                               <p className="text-xs md:text-lg text-white font-mono leading-relaxed whitespace-pre-wrap">{selectedItem.exampleRecord}</p>
                             </div>
@@ -671,8 +671,8 @@ function HomeButton({ icon, label, onClick }: { icon: React.ReactNode, label: st
       onClick={onClick}
       className="neon-button flex flex-col items-center gap-3 md:gap-6 p-4 md:p-10 group"
     >
-      <div className="w-12 h-12 md:w-16 md:h-16 bg-border-dark border border-zinc-800 rounded-2xl md:rounded-[2rem] flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all shadow-2xl">
-        <div className="text-zinc-500 group-hover:text-black transition-colors scale-75 md:scale-100">{icon}</div>
+      <div className="text-zinc-500 group-hover:text-white transition-colors scale-125 md:scale-150">
+        {icon}
       </div>
       <span className="font-black uppercase tracking-widest md:tracking-[0.3em] text-[8px] md:text-[10px] text-zinc-500 group-hover:text-white transition-colors">{label}</span>
     </motion.button>
@@ -725,7 +725,7 @@ function Section({ title, icon, children }: { title: string, icon: React.ReactNo
   return (
     <div className="bg-card-dark p-10 rounded-[3rem] border border-border-dark shadow-2xl">
       <h4 className="text-[11px] font-black text-zinc-600 uppercase tracking-[0.4em] flex items-center gap-4 mb-8">
-        <div className="p-3 bg-border-dark border border-zinc-800 rounded-[1.5rem] text-white">{icon}</div> {title}
+        <div className="text-white">{icon}</div> {title}
       </h4>
       {children}
     </div>
