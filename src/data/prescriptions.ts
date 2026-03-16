@@ -208,15 +208,6 @@ export const prescriptions: Prescription[] = [
     protocol: 'Protocolo Clínico e Diretrizes Terapêuticas da Anemia por Deficiência de Ferro'
   },
   {
-    id: '23',
-    category: 'Urgência / Cardiologia',
-    condition: 'Profilaxia de TEV (Tromboembolismo Venoso)',
-    medication: 'Enoxaparina Sódica',
-    dosage: '40 mg SC 1x/dia',
-    instructions: 'Aplicar no tecido subcutâneo do abdome. Alternar locais de aplicação. Observar sinais de sangramento.',
-    protocol: 'Diretrizes de Profilaxia de Tromboembolismo Venoso'
-  },
-  {
     id: '24',
     category: 'Atenção Primária',
     condition: 'Parasitoses Intestinais (Ascaridíase, Enterobíase)',
@@ -251,15 +242,6 @@ export const prescriptions: Prescription[] = [
     dosage: '0,25 mg a 0,5 mg VO 2x/dia (dose inicial)',
     instructions: 'Pode causar sonolência. Não ingerir álcool. Risco de dependência em uso prolongado.',
     protocol: 'Protocolos Clínicos em Psiquiatria'
-  },
-  {
-    id: '28',
-    category: 'Neurologia',
-    condition: 'Crise Convulsiva (Fase Aguda)',
-    medication: 'Diazepam',
-    dosage: '10 mg IV lento (1 a 2 mg/min)',
-    instructions: 'Monitorar padrão respiratório e nível de consciência. Pode repetir se necessário.',
-    protocol: 'Protocolo de Manejo do Estado de Mal Epiléptico'
   },
   {
     id: '29',
@@ -368,5 +350,50 @@ export const prescriptions: Prescription[] = [
     dosage: 'Ibuprofeno 600 mg VO 8/8h + Ciclobenzaprina 5 mg VO à noite',
     instructions: 'Ciclobenzaprina pode causar sonolência. Ibuprofeno tomar após as refeições. Uso por 3 a 5 dias.',
     protocol: 'Protocolo de Manejo da Dor Lombar Aguda'
+  },
+  {
+    id: '41',
+    category: 'Infectologia',
+    condition: 'Hanseníase Paucibacilar (PB)',
+    medication: 'Rifampicina + Dapsona',
+    dosage: 'Rifampicina 600mg (mensal supervisionada) + Dapsona 100mg (diária autoadministrada)',
+    instructions: 'Tratamento por 6 meses. A urina pode ficar alaranjada devido à rifampicina.',
+    protocol: 'Protocolo de Tratamento da Hanseníase - MS'
+  },
+  {
+    id: '42',
+    category: 'Infectologia',
+    condition: 'Hanseníase Multibacilar (MB)',
+    medication: 'Rifampicina + Dapsona + Clofazimina',
+    dosage: 'Rifampicina 600mg + Clofazimina 300mg + Dapsona 100mg (mensal) + Clofazimina 50mg + Dapsona 100mg (diária)',
+    instructions: 'Tratamento por 12 meses. A clofazimina pode causar pigmentação na pele.',
+    protocol: 'Protocolo de Tratamento da Hanseníase - MS'
+  },
+  {
+    id: '43',
+    category: 'Dermatologia',
+    condition: 'Escabiose',
+    medication: 'Permetrina 5% Creme',
+    dosage: 'Aplicar no corpo todo (do pescoço para baixo) à noite e lavar pela manhã.',
+    instructions: 'Repetir após 7 dias. Tratar todos os contatos domiciliares. Lavar roupas com água quente.',
+    protocol: 'Manejo de Escabiose na Atenção Básica'
+  },
+  {
+    id: '44',
+    category: 'Infectologia',
+    condition: 'Ascaridíase / Tricuríase',
+    medication: 'Albendazol 400mg',
+    dosage: 'Dose única (400mg) VO.',
+    instructions: 'Pode ser tomado em qualquer horário. Não indicado para gestantes.',
+    protocol: 'Guia de Vigilância em Saúde'
+  },
+  {
+    id: '45',
+    category: 'Ginecologia',
+    condition: 'Candidíase Vulvovaginal Recorrente',
+    medication: 'Fluconazol 150mg',
+    dosage: '1 cápsula VO nos dias 1, 4 e 7. Manutenção: 1 cápsula por semana por 6 meses.',
+    instructions: 'Evitar roupas apertadas e de tecido sintético. Manter higiene adequada.',
+    protocol: 'Protocolo de IST - Ministério da Saúde'
   }
 ];

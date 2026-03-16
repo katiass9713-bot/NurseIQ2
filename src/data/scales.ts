@@ -169,44 +169,177 @@ export const scales: Scale[] = [
     ],
     interpretation: 'Orienta a escolha do curativo e conduta terapêutica.',
     application: 'Estomaterapia, Curativos complexos.'
+  },
+  {
+    id: '15',
+    name: 'Escala de Katz',
+    description: 'Avalia a independência nas Atividades de Vida Diária (AVDs).',
+    parameters: [
+      'Banho',
+      'Vestir-se',
+      'Uso do vaso sanitário',
+      'Transferência',
+      'Continência',
+      'Alimentação'
+    ],
+    interpretation: 'Independente em todas as funções vs Dependente em uma ou mais.',
+    application: 'Saúde do Idoso, Reabilitação.'
+  },
+  {
+    id: '16',
+    name: 'Escala de Lawton e Brody',
+    description: 'Avalia as Atividades Instrumentais de Vida Diária (AIVDs).',
+    parameters: [
+      'Usar telefone',
+      'Fazer compras',
+      'Preparar refeições',
+      'Limpar a casa',
+      'Lavar roupa',
+      'Usar meios de transporte',
+      'Responsabilidade pelos medicamentos',
+      'Lidar com dinheiro'
+    ],
+    interpretation: 'Pontuação de 8 a 24. Menor pontuação indica maior dependência.',
+    application: 'Saúde do Idoso, APS.'
+  },
+  {
+    id: '17',
+    name: 'Mini Exame do Estado Mental (MEEM)',
+    description: 'Rastreio cognitivo rápido.',
+    parameters: [
+      'Orientação temporal e espacial',
+      'Registro (memória imediata)',
+      'Atenção e cálculo',
+      'Evocação',
+      'Linguagem e praxia'
+    ],
+    interpretation: 'Pontos de corte variam conforme a escolaridade (ex: 20 para analfabetos, 24 para escolarizados).',
+    application: 'Geriatria, Neurologia, APS.'
+  },
+  {
+    id: '18',
+    name: 'Teste de Fagerström',
+    description: 'Avalia o grau de dependência de nicotina.',
+    parameters: [
+      'Tempo até o primeiro cigarro',
+      'Dificuldade de não fumar em locais proibidos',
+      'Cigarro mais difícil de abandonar',
+      'Quantidade de cigarros/dia',
+      'Fumar mais pela manhã',
+      'Fumar mesmo doente'
+    ],
+    interpretation: '0-2: Muito Baixa; 3-4: Baixa; 5: Média; 6-7: Alta; 8-10: Muito Alta.',
+    application: 'Programa de Tabagismo, APS.'
+  },
+  {
+    id: '19',
+    name: 'AUDIT',
+    description: 'Identifica transtornos por uso de álcool.',
+    parameters: [
+      'Frequência de consumo',
+      'Quantidade típica',
+      'Frequência de consumo pesado',
+      'Perda de controle',
+      'Culpa após beber',
+      'Apagões',
+      'Lesões por beber',
+      'Preocupação de terceiros'
+    ],
+    interpretation: '0-7: Baixo risco; 8-15: Uso de risco; 16-19: Uso nocivo; 20+: Provável dependência.',
+    application: 'Saúde Mental, APS.'
   }
 ];
 
 export const protocols = [
   {
     id: 'p1',
-    name: 'XABCDE do Trauma',
-    description: 'Sequência prioritária no atendimento ao trauma.',
+    name: 'Acolhimento com Classificação de Risco',
+    description: 'Protocolo de triagem na APS para priorização do atendimento.',
     steps: [
-      'X: Exsanguinação (Hemorragia externa grave).',
-      'A: Airway (Vias aéreas e controle cervical).',
-      'B: Breathing (Respiração e ventilação).',
-      'C: Circulation (Circulação e controle de choque).',
-      'D: Disability (Déficit neurológico).',
-      'E: Exposure (Exposição e prevenção de hipotermia).'
+      'Identificação do motivo da consulta.',
+      'Avaliação de sinais vitais e sinais de alerta.',
+      'Classificação: Vermelho (Emergência), Amarelo (Urgência), Verde (Pouco Urgente), Azul (Não Urgente).',
+      'Encaminhamento para atendimento médico, enfermagem ou sala de urgência.'
     ]
   },
   {
     id: 'p2',
-    name: 'Anamnese SAMPLE',
-    description: 'Coleta de dados rápida em emergências.',
+    name: 'Protocolo de Pré-Natal de Baixo Risco',
+    description: 'Acompanhamento da gestante na APS.',
     steps: [
-      'S: Sinais e Sintomas.',
-      'A: Alergias.',
-      'M: Medicamentos em uso.',
-      'P: Passado médico / Prenhez.',
-      'L: Líquidos e alimentos (última ingestão).',
-      'E: Eventos relacionados ao trauma/doença.'
+      'Confirmação da gravidez e cálculo da DPP/IG.',
+      'Solicitação de exames de rotina (1º, 2º e 3º trimestres).',
+      'Avaliação nutricional e suplementação (Ferro, Ácido Fólico).',
+      'Monitoramento de PA, Peso, AU e BCF.',
+      'Vacinação (DTPA, Hepatite B, Influenza).'
     ]
   },
   {
     id: 'p3',
-    name: 'Manobra de OVACE',
-    description: 'Desobstrução de Vias Aéreas por Corpo Estranho.',
+    name: 'Protocolo de Hipertensão Arterial (APS)',
+    description: 'Manejo e acompanhamento do paciente hipertenso.',
     steps: [
-      'Adulto Consciente: Manobra de Heimlich (compressões subdiafragmáticas).',
-      'Lactente: 5 batidas nas costas + 5 compressões torácicas.',
-      'Inconsciente: Iniciar RCP e checar orofaringe.'
+      'Diagnóstico (PA ≥ 140/90 mmHg em duas ocasiões).',
+      'Estratificação de risco cardiovascular.',
+      'Orientações não farmacológicas (dieta, exercício).',
+      'Acompanhamento semestral ou trimestral conforme risco.',
+      'Monitoramento de lesões em órgãos-alvo.'
+    ]
+  },
+  {
+    id: 'p4',
+    name: 'Protocolo de Diabetes Mellitus (APS)',
+    description: 'Manejo e acompanhamento do paciente diabético.',
+    steps: [
+      'Rastreamento e diagnóstico (Glicemia de jejum, HbA1c).',
+      'Exame físico dos pés (prevenção de pé diabético).',
+      'Solicitação de exames anuais (Fundo de olho, Microalbuminúria).',
+      'Educação em saúde sobre automonitoramento e insulina.'
+    ]
+  },
+  {
+    id: 'p5',
+    name: 'Protocolo de Tuberculose (APS)',
+    description: 'Busca ativa e tratamento supervisionado.',
+    steps: [
+      'Identificação de Sintomático Respiratório (tosse ≥ 3 semanas).',
+      'Solicitação de Baciloscopia ou Teste Rápido Molecular.',
+      'Início do tratamento (Esquema Básico: RIPE).',
+      'Realização de TDO (Tratamento Diretamente Observado).',
+      'Investigação de contatos.'
+    ]
+  },
+  {
+    id: 'p6',
+    name: 'Suporte Básico de Vida (XABCDE)',
+    description: 'Protocolo de avaliação primária no trauma (PHTLS).',
+    steps: [
+      'X: Exsanguinação (Controle de hemorragias externas graves).',
+      'A: Airway (Vias aéreas e controle da coluna cervical).',
+      'B: Breathing (Respiração e ventilação).',
+      'C: Circulation (Circulação com controle de hemorragias internas).',
+      'D: Disability (Déficit neurológico).',
+      'E: Exposure (Exposição e controle da hipotermia).'
+    ]
+  },
+  {
+    id: 'p7',
+    name: 'Calendário Nacional de Vacinação (2026)',
+    description: 'Esquema vacinal completo atualizado.',
+    steps: [
+      'Ao nascer: BCG, Hepatite B.',
+      '2 meses: Penta (1ª), VIP (1ª), Pneumo 10 (1ª), Rotavírus (1ª).',
+      '3 meses: Meningo C (1ª).',
+      '4 meses: Penta (2ª), VIP (2ª), Pneumo 10 (2ª), Rotavírus (2ª).',
+      '5 meses: Meningo C (2ª).',
+      '6 meses: Penta (3ª), VIP (3ª), Influenza (Anual), Covid-19 (1ª).',
+      '7 meses: Covid-19 (2ª).',
+      '9 meses: Febre Amarela (1ª), Covid-19 (3ª).',
+      '12 meses: Tríplice Viral (1ª), Pneumo 10 (R), Meningo C (R), Meningo ACWY.',
+      '15 meses: DTP (1º R), VOP (R), Hepatite A, Tetra Viral.',
+      '4 anos: DTP (2º R), VOP (2º R), Febre Amarela (R), Varicela.',
+      '5 anos: Febre Amarela (Adicional), Pneumo 23.',
+      '9 a 14 anos: HPV (Dose única).'
     ]
   }
 ];

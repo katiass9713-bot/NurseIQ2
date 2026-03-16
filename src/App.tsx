@@ -23,7 +23,8 @@ import {
   ArrowLeft,
   Moon,
   Sun,
-  FileText
+  FileText,
+  Syringe
 } from 'lucide-react';
 import { pathologies, Pathology } from './data/pathologies';
 import { technicalTerms, TechnicalTerm } from './data/terms';
@@ -81,8 +82,19 @@ export default function App() {
 
   const filteredScales = useMemo(() => {
     return scales.filter(s => {
-      const matchesSearch = s.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          s.description.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesLetter = selectedLetter ? s.name.toUpperCase().startsWith(selectedLetter) : true;
+      return matchesSearch && matchesLetter;
+    }).sort((a, b) => a.name.localeCompare(b.name));
+  }, [searchQuery, selectedLetter]);
+
+  const filteredProtocols = useMemo(() => {
+    return protocols.filter(p => {
+      const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          p.steps.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesLetter = selectedLetter ? p.name.toUpperCase().startsWith(selectedLetter) : true;
       return matchesSearch && matchesLetter;
     }).sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery, selectedLetter]);
@@ -99,7 +111,9 @@ export default function App() {
   const filteredConsultations = useMemo(() => {
     return consultations.filter(c => {
       const matchesSearch = c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          c.category.toLowerCase().includes(searchQuery.toLowerCase());
+                          c.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          c.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          c.details.some(d => d.toLowerCase().includes(searchQuery.toLowerCase()));
       const matchesLetter = selectedLetter ? c.title.toUpperCase().startsWith(selectedLetter) : true;
       return matchesSearch && matchesLetter;
     }).sort((a, b) => a.title.localeCompare(b.title));
@@ -368,6 +382,16 @@ export default function App() {
                   />
                 ))}
 
+                {activeTab === 'SCALES' && filteredProtocols.map(p => (
+                  <ListItem 
+                    key={p.id} 
+                    active={selectedItem?.id === p.id} 
+                    onClick={() => setSelectedItem(p)}
+                    title={p.name}
+                    subtitle="Protocolo Clínico"
+                  />
+                ))}
+
                 {activeTab === 'TERMS' && filteredTerms.map(t => (
                   <ListItem 
                     key={t.term} 
@@ -408,7 +432,7 @@ export default function App() {
                   />
                 ))}
 
-                {(activeTab === 'ALMANAC' ? filteredPathologies : activeTab === 'TERMS' ? filteredTerms : activeTab === 'PHARMA' ? filteredPharma : activeTab === 'PRESCRIPTION' ? filteredPrescriptions : activeTab === 'CONSULTATION' ? filteredConsultations : filteredScales).length === 0 && (
+                {(activeTab === 'ALMANAC' ? filteredPathologies : activeTab === 'TERMS' ? filteredTerms : activeTab === 'PHARMA' ? filteredPharma : activeTab === 'PRESCRIPTION' ? filteredPrescriptions : activeTab === 'CONSULTATION' ? filteredConsultations : [...filteredScales, ...filteredProtocols]).length === 0 && (
                   <div className="p-20 text-center">
                     <Info className="w-12 h-12 text-zinc-800 mx-auto mb-6" strokeWidth={1.5} />
                     <p className="text-xs text-zinc-600 font-black uppercase tracking-widest">Nenhum resultado.</p>
@@ -450,7 +474,7 @@ export default function App() {
                         {activeTab === 'CONSULTATION' && <Users className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.5} />}
                       </div>
                       <div>
-                        <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">{selectedItem.name || selectedItem.term || selectedItem.condition || selectedItem.title}</h3>
+                        <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">{selectedItem.name || selectedItem.term || selectedItem.condition || selectedItem.title || selectedItem.age}</h3>
                         <p className="text-sm md:text-lg text-zinc-400 font-bold uppercase tracking-widest mt-2">
                           {selectedItem.category || (activeTab === 'TERMS' ? 'Terminologia Técnica' : selectedItem.class)}
                         </p>
@@ -522,28 +546,48 @@ export default function App() {
                           <p className="text-zinc-400 leading-relaxed text-xl font-medium">{selectedItem.description}</p>
                         </Section>
                         
-                        <Section title="Parâmetros de Avaliação" icon={<LayoutList className="w-6 h-6" strokeWidth={1.5} />}>
-                          <div className="grid grid-cols-1 gap-4">
-                            {selectedItem.parameters.map((p: string) => (
-                              <div key={p} className="bg-card-dark p-6 rounded-[2rem] border border-border-dark text-zinc-300 font-bold">
-                                {p}
-                              </div>
-                            ))}
-                          </div>
-                        </Section>
+                        {selectedItem.parameters && (
+                          <Section title="Parâmetros de Avaliação" icon={<LayoutList className="w-6 h-6" strokeWidth={1.5} />}>
+                            <div className="grid grid-cols-1 gap-4">
+                              {selectedItem.parameters.map((p: string) => (
+                                <div key={p} className="bg-card-dark p-6 rounded-[2rem] border border-border-dark text-zinc-300 font-bold">
+                                  {p}
+                                </div>
+                              ))}
+                            </div>
+                          </Section>
+                        )}
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                          <Section title="Interpretação" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
-                            <div className="bg-white/5 border border-white/20 p-8 rounded-[2.5rem] text-white font-black text-lg">
-                              {selectedItem.interpretation}
+                        {selectedItem.steps && (
+                          <Section title="Passos do Protocolo" icon={<LayoutList className="w-6 h-6" strokeWidth={1.5} />}>
+                            <div className="grid grid-cols-1 gap-4">
+                              {selectedItem.steps.map((s: string, idx: number) => (
+                                <div key={idx} className="bg-card-dark p-6 rounded-[2rem] border border-border-dark text-zinc-300 font-bold flex gap-4">
+                                  <span className="text-white font-black">{idx + 1}.</span> {s}
+                                </div>
+                              ))}
                             </div>
                           </Section>
-                          <Section title="Aplicação" icon={<ClipboardCheck className="w-6 h-6" strokeWidth={1.5} />}>
-                            <div className="bg-border-dark border border-zinc-800 p-8 rounded-[2.5rem] text-zinc-400 font-bold text-lg">
-                              {selectedItem.application}
-                            </div>
-                          </Section>
-                        </div>
+                        )}
+
+                        {(selectedItem.interpretation || selectedItem.application) && (
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                            {selectedItem.interpretation && (
+                              <Section title="Interpretação" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
+                                <div className="bg-white/5 border border-white/20 p-8 rounded-[2.5rem] text-white font-black text-lg">
+                                  {selectedItem.interpretation}
+                                </div>
+                              </Section>
+                            )}
+                            {selectedItem.application && (
+                              <Section title="Aplicação" icon={<ClipboardCheck className="w-6 h-6" strokeWidth={1.5} />}>
+                                <div className="bg-border-dark border border-zinc-800 p-8 rounded-[2.5rem] text-zinc-400 font-bold text-lg">
+                                  {selectedItem.application}
+                                </div>
+                              </Section>
+                            )}
+                          </div>
+                        )}
                       </>
                     )}
 

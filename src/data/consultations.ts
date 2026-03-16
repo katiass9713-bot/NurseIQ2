@@ -216,5 +216,83 @@ export const consultations: ConsultationTopic[] = [
       'Onda T: Repolarização ventricular.'
     ],
     exampleRecord: '08:15 - Paciente admitido no PS com queixa de dor torácica típica (em aperto, irradiada para MSE). Imediatamente posicionado em maca, instalado monitorização multiparamétrica e oxigênio sob cateter nasal a 2L/min. Realizado ECG de 12 derivações em menos de 10 minutos da admissão. Traçado entregue em mãos ao médico plantonista Dr. Carlos, que evidenciou supradesnivelamento do segmento ST em parede inferior (DII, DIII, aVF). Puncionado AVP calibroso em MSE e administrado AAS 300mg e Clopidogrel 300mg VO conforme prescrição médica. Aguardando vaga na Hemodinâmica. -- Enf. Nome (COREN-XX 12345)'
+  },
+  {
+    id: '14',
+    category: 'Saúde da Mulher',
+    title: 'Exame Físico da Gestante',
+    content: 'Avaliação sistemática da gestante durante o pré-natal.',
+    details: [
+      'Inspeção: Presença de cloasma gravídico, linha nigra, estrias.',
+      'Palpação (Manobras de Leopold): 1ª (Fundo uterino), 2ª (Posição fetal), 3ª (Apresentação), 4ª (Insinuação).',
+      'Medida da Altura Uterina (AU): Do sínfise púbica ao fundo do útero.',
+      'Ausculta dos Batimentos Cardiofetais (BCF): Localizar dorso fetal (normal: 120-160 bpm).',
+      'Avaliação de Edema: Membros inferiores (sinal do cacifo).'
+    ],
+    exampleRecord: 'Consulta de Pré-natal (IG: 28 sem). Gestante em bom estado geral. PA: 110/70 mmHg, Peso: 68kg. Ao exame físico: Abdome globoso, presença de linha nigra. Palpação: Dorso fetal à esquerda, apresentação cefálica. AU: 27cm. BCF: 144 bpm, rítmicos. Ausência de edema em MMII. Orientada sobre sinais de alerta e próxima consulta. -- Enf. Nome (COREN-XX 12345)'
+  },
+  {
+    id: '15',
+    category: 'Saúde da Criança',
+    title: 'Exame Físico em Puericultura',
+    content: 'Avaliação do crescimento e desenvolvimento infantil.',
+    details: [
+      'Medidas Antropométricas: Peso, Comprimento, Perímetro Cefálico (PC).',
+      'Fontanelas: Anterior (Bregmática) e Posterior (Lambdoide).',
+      'Pele: Mancha mongólica, hemangiomas, icterícia.',
+      'Reflexos Primitivos: Moro, Sucção, Preensão palmar/plantar, Marcha.',
+      'Genitália: Criptorquidia (meninos), Sinéquia (meninas).'
+    ],
+    exampleRecord: 'Consulta de Puericultura (2 meses). Lactente calmo, hidratado, corado. Peso: 5.200g (P50), Estatura: 56cm (P50), PC: 39cm. Fontanela anterior plana e normotensa. Reflexos de Moro e preensão presentes e simétricos. Coto umbilical cicatrizado. Genitália masculina: testículos tópicos na bolsa escrotal. Vacinação em dia. Mãe orientada sobre aleitamento materno exclusivo. -- Enf. Nome (COREN-XX 12345)'
+  },
+  {
+    id: '16',
+    category: 'Saúde do Idoso',
+    title: 'Exame Físico do Idoso',
+    content: 'Foco na funcionalidade e fragilidades comuns no envelhecimento.',
+    details: [
+      'Avaliação da Pele: Turgor diminuído, manchas senis, risco de lesão por pressão.',
+      'Sistema Sensorial: Acuidade visual e auditiva (teste do sussurro).',
+      'Sistema Cardiovascular: Pesquisa de hipotensão ortostática (PA deitado e em pé).',
+      'Sistema Musculoesquelético: Marcha, equilíbrio, força muscular.',
+      'Avaliação Cognitiva: MEEM, Teste do Relógio.'
+    ],
+    exampleRecord: 'Consulta de Enfermagem ao Idoso. Paciente lúcido e orientado. PA: 130/80 mmHg (sentado). Ao exame: Pele com turgor diminuído, presença de ceratoses actínicas em braços. Acuidade auditiva preservada ao teste do sussurro. Marcha estável, sem auxílio de dispositivos. Escala de Katz: Independente para AVDs. Orientado sobre prevenção de quedas no domicílio. -- Enf. Nome (COREN-XX 12345)'
+  },
+  {
+    id: '17',
+    category: 'Programas Estratégicos',
+    title: 'Exame Físico TB / MH',
+    content: 'Avaliação específica para Tuberculose e Hanseníase.',
+    details: [
+      'Tuberculose: Avaliação do padrão respiratório, ausculta pulmonar, perda ponderal.',
+      'Hanseníase (Avaliação Neurológica Simplificada): Inspeção de mãos e pés (calosidades, feridas).',
+      'Palpação de Nervos: Ulnar, Radial, Fibular comum, Tibial posterior.',
+      'Testes de Sensibilidade: Monofilamentos de Semmes-Weinstein (Estesiometria).',
+      'Avaliação de Força Muscular: Mãos e pés.'
+    ],
+    exampleRecord: 'Avaliação de Hanseníase (em tratamento MB). Paciente refere dormência em mão direita. Ao exame: Mancha hipocrômica em antebraço D com perda de sensibilidade térmica. Palpação de nervos: Nervo ulnar D espessado e doloroso à palpação. Estesiometria: Perda de sensibilidade em território do ulnar D (monofilamento roxo). Força muscular preservada. Orientado sobre autocuidados com as mãos. -- Enf. Nome (COREN-XX 12345)'
+  },
+  {
+    id: '18',
+    category: 'Consulta de Enfermagem',
+    title: 'Calendário Vacinal (2026)',
+    content: 'Esquema vacinal atualizado conforme Ministério da Saúde.',
+    details: [
+      'Ao nascer: BCG e Hepatite B.',
+      '2 meses: Pentavalente (1ª), VIP (1ª), Pneumocócica 10V (1ª), Rotavírus (1ª).',
+      '3 meses: Meningocócica C (1ª).',
+      '4 meses: Pentavalente (2ª), VIP (2ª), Pneumocócica 10V (2ª), Rotavírus (2ª).',
+      '5 meses: Meningocócica C (2ª).',
+      '6 meses: Pentavalente (3ª), VIP (3ª), Influenza (Anual), Covid-19 (1ª).',
+      '7 meses: Covid-19 (2ª).',
+      '9 meses: Febre Amarela (1ª), Covid-19 (3ª).',
+      '12 meses: Tríplice Viral (1ª), Pneumocócica 10V (Reforço), Meningocócica C (Reforço), Meningocócica ACWY.',
+      '15 meses: DTP (1º Reforço), VOP (Reforço), Hepatite A, Tetra Viral.',
+      '4 anos: DTP (2º Reforço), VOP (2º Reforço), Febre Amarela (Reforço), Varicela.',
+      '5 anos: Febre Amarela (Dose adicional se necessário), Pneumocócica 23 (Dose única).',
+      '9 a 14 anos: HPV (Dose única).'
+    ],
+    exampleRecord: '11:20 - Lactente (12 meses) comparece para atualização vacinal. Caderneta conferida. Administradas vacinas: Tríplice Viral (1ª dose), Pneumocócica 10V (reforço), Meningocócica C (reforço) e Meningocócica ACWY conforme nova recomendação. Criança tolerou bem os procedimentos. Mãe orientada sobre possíveis reações e agendado retorno para os 15 meses. -- Enf. Nome (COREN-XX 12345)'
   }
 ];

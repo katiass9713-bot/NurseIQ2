@@ -846,5 +846,77 @@ export const pharmacology: Drug[] = [
       'Monitorar nível de consciência.',
       'Observar constipação e retenção urinária.'
     ]
+  },
+  {
+    name: 'Paracetamol',
+    class: 'Analgésico / Antipirético',
+    indication: 'Dor leve a moderada e febre.',
+    dilution: 'VO: Gotas ou comprimidos. EV: Diluir em SF ou SG5% (conforme fabricante).',
+    dosage: 'Adultos: 500mg a 1g a cada 6h. Crianças: 10-15mg/kg/dose.',
+    nursingCare: [
+      'Monitorar função hepática em uso prolongado.',
+      'Não exceder 4g/dia em adultos.',
+      'Observar sinais de hipersensibilidade.'
+    ]
+  },
+  {
+    name: 'Ibuprofeno',
+    class: 'AINE (Anti-inflamatório Não Esteroidal)',
+    indication: 'Dor, febre e inflamação.',
+    dilution: 'Via Oral.',
+    dosage: 'Adultos: 400-600mg a cada 8h. Crianças: 5-10mg/kg/dose.',
+    nursingCare: [
+      'Administrar preferencialmente após as refeições.',
+      'Monitorar função renal e sinais de sangramento gástrico.',
+      'Evitar em pacientes com dengue suspeita.'
+    ]
+  },
+  {
+    name: 'Amoxicilina',
+    class: 'Antibiótico (Penicilina)',
+    indication: 'Infecções bacterianas (vias aéreas, ITU, pele).',
+    dilution: 'Via Oral (Cápsulas ou Suspensão).',
+    dosage: '500mg a cada 8h ou 875mg a cada 12h.',
+    nursingCare: [
+      'Verificar histórico de alergia a penicilinas.',
+      'Orientar sobre a importância de completar o tempo de tratamento.',
+      'Observar reações cutâneas ou diarreia.'
+    ]
+  },
+  {
+    name: 'Azitromicina',
+    class: 'Antibiótico (Macrolídeo)',
+    indication: 'Infecções respiratórias, ISTs (Clamídia).',
+    dilution: 'Via Oral ou EV (diluição específica em SF/SG5%).',
+    dosage: '500mg 1x/dia por 3 a 5 dias. IST: 1g dose única.',
+    nursingCare: [
+      'Monitorar intervalo QT no ECG (risco de arritmias).',
+      'Administrar 1h antes ou 2h após as refeições (VO).',
+      'Observar queixas gastrointestinais.'
+    ]
+  },
+  {
+    name: 'Prednisona',
+    class: 'Corticosteroide Oral',
+    indication: 'Doenças inflamatórias, autoimunes, asma.',
+    dilution: 'Via Oral.',
+    dosage: '5mg a 60mg/dia (conforme prescrição).',
+    nursingCare: [
+      'Administrar preferencialmente pela manhã.',
+      'Monitorar glicemia e pressão arterial.',
+      'Não interromper o uso abruptamente (risco de insuficiência adrenal).'
+    ]
+  },
+  {
+    name: 'Salbutamol',
+    class: 'Broncodilatador (Beta-2 Agonista)',
+    indication: 'Asma, DPOC, broncoespasmo.',
+    dilution: 'Inalatório (Nebulização ou Spray).',
+    dosage: 'Nebulização: 2,5-5mg. Spray: 100-200mcg.',
+    nursingCare: [
+      'Monitorar frequência cardíaca (pode causar taquicardia).',
+      'Observar tremores e ansiedade.',
+      'Avaliar padrão respiratório antes e após o uso.'
+    ]
   }
 ];
