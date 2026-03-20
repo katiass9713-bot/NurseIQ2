@@ -5,6 +5,7 @@ export interface ConsultationTopic {
   content: string;
   details: string[];
   exampleRecord?: string;
+  exampleRecords?: { title: string; content: string }[];
 }
 
 export const consultations: ConsultationTopic[] = [
@@ -26,29 +27,67 @@ export const consultations: ConsultationTopic[] = [
     id: '2',
     category: 'Consulta de Enfermagem',
     title: 'Puericultura',
-    content: 'Acompanhamento do crescimento e desenvolvimento infantil.',
+    content: 'Acompanhamento do crescimento e desenvolvimento infantil, com foco na promoção da saúde e prevenção de agravos.',
     details: [
-      'Avaliação do crescimento: Peso, Estatura, Perímetro Cefálico.',
-      'Avaliação do desenvolvimento: Marcos motores, cognitivos e sociais.',
-      'Estado vacinal: Conferência da caderneta de vacinação.',
-      'Aleitamento materno e alimentação complementar.',
-      'Orientações de prevenção de acidentes.'
+      'Avaliação do crescimento: Peso, Estatura, Perímetro Cefálico (curvas da OMS).',
+      'Avaliação do desenvolvimento: Marcos motores, cognitivos e sociais (Caderneta da Criança).',
+      'Estado vacinal: Conferência rigorosa da caderneta de vacinação.',
+      'Aleitamento materno e alimentação complementar: Orientações conforme faixa etária.',
+      'Prevenção de acidentes e promoção de ambiente seguro.',
+      'Rastreamento de Transtorno do Espectro Autista (M-CHAT-R/F): Aplicado entre 16 e 30 meses. Consiste em 20 perguntas (sim/não) para os pais. Risco Baixo (0-2 pontos), Risco Moderado (3-7 pontos - aplicar entrevista de seguimento), Risco Alto (8-20 pontos - encaminhar imediatamente).'
     ],
-    exampleRecord: '09:00 - Comparece à consulta de puericultura (6 meses), acompanhado da mãe. Mãe relata AME e introdução alimentar iniciada há 1 semana com boa aceitação. Ao exame: ativo, reativo, sorri, senta com apoio, tenta alcançar objetos. Peso: 7,2kg (Z-score 0), Estatura: 66cm (Z-score 0), PC: 43cm. Reflexos presentes e simétricos. Fontanela anterior normotensa (1x1cm). Pele íntegra, corada. Abdome flácido, RHA+. Eliminações fisiológicas presentes segundo a mãe. Conduta: Orientada sobre continuidade da IA e manutenção do aleitamento. Vacinas do 6º mês atualizadas nesta data. Retorno agendado para o 9º mês. -- Enf. Nome (COREN-XX 12345)'
+    exampleRecords: [
+      {
+        title: 'Recém-nascido (0 a 15 dias)',
+        content: 'S: Mãe primípara, relata dificuldades na pega da amamentação, fissuras mamilares. RN sugando bem, evacuações e diureses presentes (amarelo-ouro). Nega febre.\nO: RN ativo, reativo, choro forte. Peso: 3,4kg (recuperando peso de nascimento), Estatura: 50cm, PC: 35cm. Icterícia fisiológica leve (zona I). Coto umbilical em processo de mumificação, sem sinais flogísticos. Reflexos primitivos (Moro, sucção, preensão) presentes e simétricos.\nA: RN a termo, crescimento adequado, dificuldade no aleitamento materno.\nP: Corrigida pega e posicionamento durante a consulta. Orientada ordenha de alívio e banho de sol. Reforçada higiene do coto com álcool 70%. Agendado retorno em 1 semana.'
+      },
+      {
+        title: 'Lactente (6 meses)',
+        content: 'S: Mãe relata introdução alimentar iniciada há 1 semana com boa aceitação de frutas amassadas. Mantém aleitamento materno sob livre demanda. Sono tranquilo.\nO: Ativo, reativo, sorri, senta com apoio, tenta alcançar objetos. Peso: 7,2kg (Z-score 0), Estatura: 66cm (Z-score 0), PC: 43cm. Reflexos simétricos. Fontanela anterior normotensa (1x1cm). Pele íntegra. Abdome flácido, RHA+. Eliminações fisiológicas.\nA: Crescimento e desenvolvimento adequados para a idade. Introdução alimentar em curso.\nP: Orientada sobre continuidade da IA (papinhas salgadas) e manutenção do aleitamento. Vacinas do 6º mês atualizadas nesta data. Retorno agendado para o 9º mês.'
+      },
+      {
+        title: 'Lactente (1 ano)',
+        content: 'S: Mãe refere que a criança já engatinha bem e tenta ficar em pé com apoio. Fala "mama" e "papa". Alimentação da família, boa aceitação. Nega intercorrências.\nO: Criança interativa, explora o ambiente. Fica em pé com apoio, faz pinça com os dedos. Peso: 9,8kg (Z-score 0), Estatura: 75cm (Z-score 0), PC: 46cm. Ausculta cardíaca e pulmonar sem alterações. Dentição: 4 incisivos presentes.\nA: Crescimento e desenvolvimento adequados. \nP: Orientada sobre prevenção de acidentes (quedas, engasgos, intoxicações). Reforçada higiene bucal. Vacinas de 1 ano (Tríplice Viral, Pneumo 10, Meningo C, ACWY) administradas. Retorno aos 15 meses.'
+      },
+      {
+        title: 'Criança (2 anos)',
+        content: 'S: Pais relatam que a criança corre, chuta bola, forma frases curtas ("quero água"). Desfralde diurno iniciado. M-CHAT-R aplicado com pontuação 1 (Baixo Risco).\nO: Criança ativa, colaborativa. Peso: 12,5kg (Z-score 0), Estatura: 87cm (Z-score 0). Marcha estável. Interage bem durante a consulta, aponta para partes do corpo quando solicitada.\nA: Crescimento e desenvolvimento adequados. Risco baixo para TEA.\nP: Orientada sobre manejo de birras e estabelecimento de limites. Incentivada leitura e brincadeiras lúdicas. Vacinas em dia. Retorno anual.'
+      },
+      {
+        title: 'Criança (5 anos)',
+        content: 'S: Criança frequenta a escola, mãe relata boa adaptação. Alimentação variada, mas com recusa de alguns vegetais. Controle esfincteriano total.\nO: Criança comunicativa, desenha formas simples, pula num pé só. Peso: 18kg (Z-score 0), Estatura: 110cm (Z-score 0), IMC adequado. Acuidade visual (Snellen) 20/20 em ambos os olhos. Exame físico sem alterações.\nA: Crescimento e desenvolvimento adequados. \nP: Orientada sobre alimentação saudável (evitar ultraprocessados) e tempo de tela (máx 1h/dia). Vacinas de 5 anos (Febre Amarela, Pneumo 23 se indicação) atualizadas. Retorno anual.'
+      }
+    ]
   },
   {
     id: '3',
     category: 'Consulta de Enfermagem',
     title: 'Pré-Natal',
-    content: 'Assistência à gestante para garantir uma gestação saudável e um parto seguro.',
+    content: 'Assistência integral à gestante para garantir uma gestação saudável, identificação precoce de riscos e um parto seguro.',
     details: [
       'Cálculo da Idade Gestacional (IG) e Data Provável do Parto (DPP).',
-      'Aferição de PA, Peso, Altura Uterina (AU) e Batimentos Cardíacos Fetais (BCF).',
-      'Solicitação e avaliação de exames de rotina (Tipagem sanguínea, VDRL, HIV, Toxoplasmose, Hepatites, Urina, USG).',
-      'Suplementação de Ácido Fólico e Sulfato Ferroso.',
-      'Orientações sobre sinais de alarme e preparo para o parto.'
+      'Parâmetros Clínicos Esperados (Risco Habitual): BCF entre 110-160 bpm; Altura Uterina (AU) crescendo ~1cm/semana a partir de 20 semanas (acompanhar curva); PA < 140/90 mmHg; Ganho de peso adequado ao IMC pré-gestacional.',
+      'Manobras de Leopold-Zweifel (a partir de 28 semanas): 1º Tempo (Fundo uterino - Situação: longitudinal, transversa); 2º Tempo (Laterais do abdome - Posição: dorso à direita ou esquerda); 3º Tempo (Apreensão do polo inferior - Apresentação: cefálica, pélvica); 4º Tempo (Escavação pélvica - Insinuação).',
+      'Exames 1º Trimestre: Hemograma, Tipagem Sanguínea/Fator Rh, Glicemia em jejum, Teste rápido Sífilis/HIV/Hepatite B e C, Toxoplasmose (IgG/IgM), Urina tipo I, Urocultura, USG obstétrica (preferencialmente morfológica de 1T).',
+      'Exames 2º Trimestre: TOTG 75g (entre 24-28 semanas), Coombs indireto (se Rh negativo, repetir mensalmente).',
+      'Exames 3º Trimestre: Repetir Hemograma, Glicemia, VDRL, HIV, Hepatites, Urina I, Urocultura. Pesquisa de Estreptococo do Grupo B (GBS) entre 35-37 semanas.',
+      'Suplementação: Ácido Fólico (até fim do 1º trimestre) e Sulfato Ferroso (profilático até 3 meses pós-parto).',
+      'Orientações: Sinais de alarme (sangramento, perda de líquido, cefaleia intensa, escotomas, dor epigástrica), plano de parto e aleitamento.'
     ],
-    exampleRecord: '10:15 - Gestante, 24 anos, G2P1A0, comparece para 3ª consulta de pré-natal. IG: 28 semanas e 3 dias (DUM). Queixa de pirose e edema leve em MMII no fim do dia. Nega sangramento, perda de líquido ou contrações. Ao exame: Corada, hidratada, eupneica. PA: 110x70 mmHg, FC: 82 bpm, Peso: 68kg (+1,5kg desde a última consulta). Abdome gravídico, AU: 27cm. BCF: 144 bpm no QIE. Dinâmica uterina ausente. Edema em MMII (+/4+). Exames do 2º trimestre avaliados, sem alterações. Conduta: Orientada sobre fracionamento da dieta, elevação dos MMII ao repouso e sinais de alarme para procurar a maternidade. Mantida prescrição de Sulfato Ferroso. Retorno agendado em 4 semanas. -- Enf. Nome (COREN-XX 12345)'
+    exampleRecords: [
+      {
+        title: '1º Trimestre (Ex: 10 semanas)',
+        content: 'S: Gestante, 26 anos, G1P0A0, comparece para 1ª consulta de pré-natal. DUM: 15/01/2026. Relata náuseas matinais e sonolência. Nega sangramentos ou dor pélvica. Antecedentes: nega HAS, DM ou alergias.\nO: Corada, hidratada. PA: 110x70 mmHg, FC: 80 bpm, Peso: 62kg, Altura: 1,65m (IMC: 22,7 - Eutrófica). Mamas simétricas, sem alterações. Abdome flácido, indolor. AU não mensurável ainda. BCF não audível com Sonar.\nA: Gestação de risco habitual, 10 semanas e 2 dias. Sintomas fisiológicos do 1T.\nP: Solicitados exames de rotina do 1º trimestre. Prescrito Ácido Fólico 400mcg/dia. Orientada sobre alimentação fracionada para náuseas, hidratação e sinais de alarme. Agendado retorno com exames.'
+      },
+      {
+        title: '2º Trimestre (Ex: 24 semanas)',
+        content: 'S: Gestante comparece para consulta de rotina. IG: 24 semanas. Relata movimentação fetal ativa. Queixa de pirose ocasional. Nega sangramento, perda de líquido ou contrações.\nO: PA: 115x75 mmHg, Peso: 66kg (+4kg desde o início). Abdome gravídico. AU: 23cm (adequada para IG). Manobras de Leopold: situação longitudinal. BCF: 142 bpm no QIE. Dinâmica uterina ausente. Edema em MMII (+/4+).\nA: Gestação de risco habitual, 24 semanas. Crescimento fetal adequado.\nP: Solicitado TOTG 75g. Iniciada suplementação com Sulfato Ferroso 40mg/dia. Orientada sobre fracionamento da dieta para pirose, elevação dos MMII ao repouso. Retorno em 4 semanas.'
+      },
+      {
+        title: '3º Trimestre (Ex: 36 semanas)',
+        content: 'S: Gestante em acompanhamento, IG: 36 semanas. Relata ansiedade para o parto, aumento da frequência urinária e dor lombar leve. Movimentação fetal presente e vigorosa. Nega perda de líquido ou sangramento.\nO: PA: 120x80 mmHg, Peso: 72kg (+10kg total). AU: 34cm. Manobras de Leopold: situação longitudinal, dorso à esquerda, apresentação cefálica, insinuada. BCF: 138 bpm no QIE. DU: ausente. Edema em MMII (++/4+).\nA: Gestação de risco habitual, 36 semanas. Feto cefálico.\nP: Solicitada pesquisa de GBS e exames de 3º trimestre. Revisado plano de parto. Orientada sobre sinais de trabalho de parto (contrações rítmicas, perda de tampão/líquido) e amamentação. Retorno em 15 dias.'
+      }
+    ]
   },
   {
     id: '4',

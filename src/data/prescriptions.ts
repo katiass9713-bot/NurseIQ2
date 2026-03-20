@@ -6,6 +6,8 @@ export interface Prescription {
   dosage: string;
   instructions: string;
   protocol?: string;
+  mechanismOfAction?: string;
+  interactions?: string[];
 }
 
 export const prescriptions: Prescription[] = [
@@ -16,7 +18,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Aciclovir',
     dosage: 'VO: 200 mg 5x/dia por 5 dias. Recorrência: 200 mg 5x/dia por 5 dias.',
     instructions: 'Omitir a dose noturna. Casos graves sob supervisão médica.',
-    protocol: 'Protocolo Clínico e Diretrizes Terapêuticas (PCDT) para IST'
+    protocol: 'Protocolo Clínico e Diretrizes Terapêuticas (PCDT) para IST',
+    mechanismOfAction: 'Antiviral análogo de nucleosídeo que inibe a síntese de DNA viral, bloqueando a replicação do vírus Herpes simplex.',
+    interactions: ['Probenecida (aumenta meia-vida do aciclovir)', 'Drogas nefrotóxicas (aumenta risco de lesão renal)']
   },
   {
     id: '2',
@@ -25,7 +29,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Benzilpenicilina Benzatina',
     dosage: '2,4 milhões UI IM dose única (1,2 milhão UI em cada glúteo)',
     instructions: 'Via IM profunda. Observar reação de Jarisch-Herxheimer.',
-    protocol: 'PCDT para IST - Ministério da Saúde'
+    protocol: 'PCDT para IST - Ministério da Saúde',
+    mechanismOfAction: 'Bactericida; inibe a síntese da parede celular bacteriana, ligando-se às proteínas ligadoras de penicilina (PBPs).',
+    interactions: ['Tetraciclinas (antagonismo bactericida)', 'Probenecida (prolonga níveis séricos da penicilina)']
   },
   {
     id: '3',
@@ -34,7 +40,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Benzilpenicilina Benzatina',
     dosage: '2,4 milhões UI IM 1x/semana por 3 semanas (total de 7,2 milhões UI)',
     instructions: 'Via IM profunda. Tempo máximo de uso: 3 semanas.',
-    protocol: 'PCDT para IST - Ministério da Saúde'
+    protocol: 'PCDT para IST - Ministério da Saúde',
+    mechanismOfAction: 'Bactericida; inibe a síntese da parede celular bacteriana, ligando-se às proteínas ligadoras de penicilina (PBPs).',
+    interactions: ['Tetraciclinas (antagonismo bactericida)', 'Probenecida (prolonga níveis séricos da penicilina)']
   },
   {
     id: '4',
@@ -43,7 +51,10 @@ export const prescriptions: Prescription[] = [
     medication: 'Azitromicina',
     dosage: '1 g VO dose única; ou 500 mg VO dose única + 250 mg VO/dia por 4 dias',
     instructions: 'Tratar parceiro(a).',
-    protocol: 'PCDT para IST - Ministério da Saúde'
+    protocol: 'PCDT para IST - Ministério da Saúde',
+    mechanismOfAction: 'Macrolídeo que inibe a síntese proteica bacteriana ligando-se à subunidade 50S do ribossomo.',
+    interactions: ['Antiácidos com alumínio/magnésio (reduzem absorção)', 'Digoxina (pode aumentar níveis de digoxina)']
+
   },
   {
     id: '5',
@@ -52,7 +63,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Ceftriaxona + Azitromicina',
     dosage: 'Ceftriaxona 500 mg IM dose única + Azitromicina 1g VO',
     instructions: 'Reconstituição IM: 500 mg + 2 mL lidocaína 1%.',
-    protocol: 'PCDT para IST - Ministério da Saúde'
+    protocol: 'PCDT para IST - Ministério da Saúde',
+    mechanismOfAction: 'Ceftriaxona inibe a síntese da parede celular bacteriana. Azitromicina inibe a síntese proteica ligando-se à subunidade 50S.',
+    interactions: ['Cálcio IV (risco de precipitação com ceftriaxona)', 'Antiácidos (reduzem absorção da azitromicina)']
   },
   {
     id: '6',
@@ -61,7 +74,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Etinilestradiol + Levonorgestrel',
     dosage: '1 comprimido VO/dia por 21 dias + pausa de 7 dias',
     instructions: 'Uso contínuo enquanto não houver contraindicação.',
-    protocol: 'Manual de Anticoncepção da FEBRASGO'
+    protocol: 'Manual de Anticoncepção da FEBRASGO',
+    mechanismOfAction: 'Inibe a ovulação por supressão das gonadotrofinas (FSH e LH), altera o muco cervical (dificulta a penetração espermática) e o endométrio.',
+    interactions: ['Anticonvulsivantes (fenitoína, carbamazepina) reduzem a eficácia contraceptiva', 'Rifampicina (indutor enzimático, reduz eficácia)']
   },
   {
     id: '7',
@@ -79,7 +94,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Ibuprofeno',
     dosage: '300–600 mg VO a cada 8h',
     instructions: 'Uso máximo: até 5–7 dias. Risco gástrico.',
-    protocol: 'Protocolos de Atenção Básica - Saúde das Mulheres'
+    protocol: 'Protocolos de Atenção Básica - Saúde das Mulheres',
+    mechanismOfAction: 'Inibidor não seletivo da ciclooxigenase (COX-1 e COX-2), reduzindo a síntese de prostaglandinas, mediadores da dor e inflamação.',
+    interactions: ['AAS (competição pela COX-1, reduz efeito cardioprotetor)', 'Anti-hipertensivos (pode reduzir o efeito hipotensor)']
   },
   {
     id: '9',
@@ -124,7 +141,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Cloridrato de Metformina',
     dosage: '500 mg ou 850 mg, 1 a 2 vezes ao dia, junto às refeições',
     instructions: 'Uso contínuo. Risco de desconforto gastrointestinal.',
-    protocol: 'Diretrizes da Sociedade Brasileira de Diabetes (SBD)'
+    protocol: 'Diretrizes da Sociedade Brasileira de Diabetes (SBD)',
+    mechanismOfAction: 'Reduz a produção hepática de glicose (gliconeogênese), diminui a absorção intestinal de glicose e melhora a sensibilidade à insulina.',
+    interactions: ['Contrastes iodados (risco de acidose lática, suspender 48h antes)', 'Álcool (aumenta risco de acidose lática)']
   },
   {
     id: '14',
@@ -169,7 +188,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Losartana Potássica',
     dosage: '50 mg, 1 a 2 vezes ao dia',
     instructions: 'Uso contínuo. Monitorar função renal e potássio.',
-    protocol: 'Diretrizes Brasileiras de Hipertensão Arterial'
+    protocol: 'Diretrizes Brasileiras de Hipertensão Arterial',
+    mechanismOfAction: 'Antagonista do receptor AT1 da angiotensina II, bloqueando os efeitos vasoconstritores e secretores de aldosterona da angiotensina II.',
+    interactions: ['Diuréticos poupadores de potássio (risco de hipercalemia)', 'AINEs (podem reduzir o efeito anti-hipertensivo e piorar função renal)']
   },
   {
     id: '19',
@@ -178,7 +199,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Salbutamol (Aerossol 100mcg/jato)',
     dosage: '2 a 4 jatos com espaçador, a cada 20 minutos por até 1 hora',
     instructions: 'Avaliar resposta clínica após 1 hora. Encaminhar se não houver melhora.',
-    protocol: 'Diretrizes da Sociedade Brasileira de Pneumologia e Tisiologia (SBPT)'
+    protocol: 'Diretrizes da Sociedade Brasileira de Pneumologia e Tisiologia (SBPT)',
+    mechanismOfAction: 'Agonista seletivo dos receptores beta-2 adrenérgicos, promovendo broncodilatação rápida e relaxamento da musculatura lisa das vias aéreas.',
+    interactions: ['Betabloqueadores não seletivos (antagonizam o efeito broncodilatador)', 'Diuréticos não poupadores de potássio (risco de hipocalemia)']
   },
   {
     id: '20',
@@ -196,7 +219,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Levotiroxina Sódica',
     dosage: 'Dose individualizada (ex: 25 a 100 mcg/dia)',
     instructions: 'Tomar em jejum, 30 a 60 minutos antes do café da manhã. Não misturar com outras medicações.',
-    protocol: 'Consenso Brasileiro para o Tratamento do Hipotireoidismo'
+    protocol: 'Consenso Brasileiro para o Tratamento do Hipotireoidismo',
+    mechanismOfAction: 'Hormônio tireoidiano sintético (T4) que se converte em T3 nos tecidos periféricos, regulando o metabolismo basal, crescimento e desenvolvimento.',
+    interactions: ['Sais de ferro e cálcio (reduzem absorção, separar por 4h)', 'Amiodarona (pode alterar níveis de hormônios tireoidianos)']
   },
   {
     id: '22',
@@ -232,7 +257,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Omeprazol',
     dosage: '20 a 40 mg VO 1x/dia',
     instructions: 'Tomar em jejum, 30 minutos antes do café da manhã.',
-    protocol: 'Consenso Brasileiro da Doença do Refluxo Gastroesofágico'
+    protocol: 'Consenso Brasileiro da Doença do Refluxo Gastroesofágico',
+    mechanismOfAction: 'Inibidor da bomba de prótons (IBP) que bloqueia a enzima H+/K+ ATPase nas células parietais gástricas, reduzindo a secreção de ácido.',
+    interactions: ['Clopidogrel (reduz ativação do clopidogrel, diminuindo efeito antiplaquetário)', 'Cetoconazol/Itraconazol (reduz absorção devido ao aumento do pH gástrico)']
   },
   {
     id: '27',
@@ -241,7 +268,9 @@ export const prescriptions: Prescription[] = [
     medication: 'Clonazepam',
     dosage: '0,25 mg a 0,5 mg VO 2x/dia (dose inicial)',
     instructions: 'Pode causar sonolência. Não ingerir álcool. Risco de dependência em uso prolongado.',
-    protocol: 'Protocolos Clínicos em Psiquiatria'
+    protocol: 'Protocolos Clínicos em Psiquiatria',
+    mechanismOfAction: 'Benzodiazepínico que potencializa a ação inibitória do neurotransmissor GABA no SNC, promovendo efeito ansiolítico, sedativo e anticonvulsivante.',
+    interactions: ['Álcool e outros depressores do SNC (potencializam sedação e risco de depressão respiratória)', 'Fluconazol (aumenta níveis séricos do clonazepam)']
   },
   {
     id: '29',

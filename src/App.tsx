@@ -164,7 +164,7 @@ export default function App() {
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             <HomeButton 
               icon={<BookOpen className="w-6 h-6" strokeWidth={1.5} />} 
-              label="Almanaque" 
+              label="Cuidados Clínicos" 
               onClick={() => handleTabChange('ALMANAC')} 
             />
             <HomeButton 
@@ -174,7 +174,7 @@ export default function App() {
             />
             <HomeButton 
               icon={<Pill className="w-6 h-6" strokeWidth={1.5} />} 
-              label="Farmacologia" 
+              label="Administração de Medicamentos" 
               onClick={() => handleTabChange('PHARMA')} 
             />
             <HomeButton 
@@ -189,7 +189,7 @@ export default function App() {
             />
             <HomeButton 
               icon={<Users className="w-6 h-6" strokeWidth={1.5} />} 
-              label="Consulta" 
+              label="Consultas e Evolução de Enfermagem" 
               onClick={() => handleTabChange('CONSULTATION')} 
             />
           </div>
@@ -249,7 +249,7 @@ export default function App() {
             active={activeTab === 'ALMANAC'} 
             onClick={() => handleTabChange('ALMANAC')} 
             icon={<BookOpen className="w-5 h-5" strokeWidth={1.5} />} 
-            label="Almanaque" 
+            label="Cuidados Clínicos" 
           />
           <SidebarButton 
             active={activeTab === 'SCALES'} 
@@ -261,7 +261,7 @@ export default function App() {
             active={activeTab === 'PHARMA'} 
             onClick={() => handleTabChange('PHARMA')} 
             icon={<Pill className="w-5 h-5" strokeWidth={1.5} />} 
-            label="Farmacologia" 
+            label="Administração de Medicamentos" 
           />
           <SidebarButton 
             active={activeTab === 'TERMS'} 
@@ -279,7 +279,7 @@ export default function App() {
             active={activeTab === 'CONSULTATION'} 
             onClick={() => handleTabChange('CONSULTATION')} 
             icon={<Users className="w-5 h-5" strokeWidth={1.5} />} 
-            label="Consulta" 
+            label="Consultas e Evolução de Enfermagem" 
           />
         </nav>
 
@@ -297,12 +297,12 @@ export default function App() {
         <header className={cn("bg-card-dark/50 backdrop-blur-xl border-b border-border-dark p-10 flex-col gap-8", selectedItem ? "hidden md:flex" : "flex")}>
           <div className="flex items-center justify-between">
             <h2 className="text-4xl font-black text-white tracking-tighter">
-              {activeTab === 'ALMANAC' && "Almanaque Clínico"}
+              {activeTab === 'ALMANAC' && "Cuidados Clínicos"}
               {activeTab === 'SCALES' && "Escalas & Protocolos"}
-              {activeTab === 'PHARMA' && "Guia Farmacológico"}
+              {activeTab === 'PHARMA' && "Administração de Medicamentos"}
               {activeTab === 'TERMS' && "Terminologia Técnica"}
               {activeTab === 'PRESCRIPTION' && "Guia de Prescrição"}
-              {activeTab === 'CONSULTATION' && "Consulta de Enfermagem"}
+              {activeTab === 'CONSULTATION' && "Consultas e Evolução de Enfermagem"}
             </h2>
             <button 
               onClick={() => handleTabChange('HOME')}
@@ -532,7 +532,7 @@ export default function App() {
                           </Section>
                         </div>
 
-                        <Section title="Farmacologia Aplicada" icon={<Pill className="w-6 h-6" strokeWidth={1.5} />}>
+                        <Section title="Administração de Medicamentos" icon={<Pill className="w-6 h-6" strokeWidth={1.5} />}>
                           <div className="bg-card-dark text-white p-8 rounded-[2rem] font-mono text-base leading-relaxed border border-white/20 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)]">
                             {selectedItem.pharmacology}
                           </div>
@@ -554,6 +554,14 @@ export default function App() {
                                   {p}
                                 </div>
                               ))}
+                            </div>
+                          </Section>
+                        )}
+
+                        {selectedItem.theoreticalBasis && (
+                          <Section title="Embasamento Teórico" icon={<BookOpen className="w-6 h-6" strokeWidth={1.5} />}>
+                            <div className="bg-card-dark p-8 rounded-[2.5rem] border border-border-dark">
+                              <p className="text-zinc-300 leading-relaxed text-lg font-medium">{selectedItem.theoreticalBasis}</p>
                             </div>
                           </Section>
                         )}
@@ -657,6 +665,27 @@ export default function App() {
                               <p className="text-lg text-zinc-300 font-medium leading-relaxed">{selectedItem.instructions}</p>
                             </div>
                           </Section>
+                          
+                          {selectedItem.mechanismOfAction && (
+                            <Section title="Mecanismo de Ação" icon={<Activity className="w-6 h-6" strokeWidth={1.5} />}>
+                              <div className="bg-card-dark p-6 rounded-[2rem] border border-border-dark">
+                                <p className="text-lg text-zinc-300 font-medium leading-relaxed">{selectedItem.mechanismOfAction}</p>
+                              </div>
+                            </Section>
+                          )}
+
+                          {selectedItem.interactions && selectedItem.interactions.length > 0 && (
+                            <Section title="Interações Medicamentosas" icon={<ShieldAlert className="w-6 h-6" strokeWidth={1.5} />}>
+                              <ul className="space-y-4">
+                                {selectedItem.interactions.map((interaction: string, idx: number) => (
+                                  <li key={idx} className="flex items-start gap-4 text-lg text-zinc-400 font-medium bg-card-dark p-6 rounded-[2rem] border border-border-dark">
+                                    <span className="w-2 h-2 mt-2 bg-red-500 rounded-full shrink-0 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                                    {interaction}
+                                  </li>
+                                ))}
+                              </ul>
+                            </Section>
+                          )}
                         </div>
                       </>
                     )}
@@ -675,7 +704,18 @@ export default function App() {
                             ))}
                           </ul>
                         </Section>
-                        {selectedItem.exampleRecord && (
+                        {selectedItem.exampleRecords && selectedItem.exampleRecords.length > 0 ? (
+                          <Section title="Exemplos de Evolução / Registro" icon={<FileText className="w-6 h-6" strokeWidth={1.5} />}>
+                            <div className="space-y-6">
+                              {selectedItem.exampleRecords.map((record: { title: string, content: string }, idx: number) => (
+                                <div key={idx} className="bg-white/5 p-5 md:p-8 rounded-3xl md:rounded-[2.5rem] border border-white/20">
+                                  <h4 className="text-white font-bold text-lg mb-4 border-b border-white/10 pb-2">{record.title}</h4>
+                                  <p className="text-xs md:text-lg text-zinc-300 font-mono leading-relaxed whitespace-pre-wrap">{record.content}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </Section>
+                        ) : selectedItem.exampleRecord && (
                           <Section title="Exemplo de Evolução / Registro" icon={<FileText className="w-6 h-6" strokeWidth={1.5} />}>
                             <div className="bg-white/5 p-5 md:p-8 rounded-3xl md:rounded-[2.5rem] border border-white/20">
                               <p className="text-xs md:text-lg text-white font-mono leading-relaxed whitespace-pre-wrap">{selectedItem.exampleRecord}</p>
